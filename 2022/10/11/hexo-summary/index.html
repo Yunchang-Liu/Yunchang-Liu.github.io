@@ -3,8 +3,8 @@
 
 
 <head>
-    <meta charset="utf-8">
-    <meta name="keywords" content="hexo+matery个人主页操作总结, My Homepage">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="keywords" content="hexo+matery个人主页操作总结, Yunchang">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>hexo+matery个人主页操作总结 | My Homepage</title>
+    <title>hexo+matery个人主页操作总结 | Yunchang</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -29,13 +29,14 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 6.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 
 
 <body>
-    <header class="navbar-fixed">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
@@ -43,7 +44,7 @@
                     
                     <img src="/medias/logo.png" class="logo-img" alt="LOGO">
                     
-                    <span class="logo-span">My Homepage</span>
+                    <span class="logo-span">Yunchang</span>
                 </a>
             </div>
             
@@ -120,7 +121,7 @@
         
         <img src="/medias/logo.png" class="logo-img circle responsive-img">
         
-        <div class="logo-name">My Homepage</div>
+        <div class="logo-name">Yunchang</div>
         <div class="logo-desc">
             
             Never really desperate, only the lost of the soul.
@@ -269,14 +270,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    411
+                    513
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    1 Min
+                    2 Min
                 </div>
                 
 
@@ -293,27 +294,75 @@
             <div id="articleContent">
                 <h1 id="写博客"><a href="#写博客" class="headerlink" title="写博客"></a>写博客</h1><ol>
 <li><p>在_post 文件夹下，新建&amp;&amp;.md 文件或 hexo new &lt;title&gt;</p>
-<pre><code> 基本配置如下：
- title： 文章标题
- top： 是否把文章置顶
- img： 是否给文章定义特色图片，如果不设置，默认从featureimages里面抽取
- summary： 是否给文章加上摘要，不设置，默认截取文章开头一部分
- categories： 给文章分类
- tags： 给文章加标签，可加多个
-</code></pre>
+<p> 基本配置如下：<br> title： 文章标题<br> top： 是否把文章置顶<br> img： 是否给文章定义特色图片，如果不设置，默认从featureimages里面抽取<br> summary： 是否给文章加上摘要，不设置，默认截取文章开头一部分<br> categories： 给文章分类<br> tags： 给文章加标签，可加多个</p>
 </li>
 <li><p>剩下博客书写同csdn一样，可以直接复制过去</p>
- <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: hexo的个性化配置</span><br><span class="line">date: </span><br><span class="line">author: Messi</span><br><span class="line">img: </span><br><span class="line">top: true</span><br><span class="line">cover: true</span><br><span class="line">coverImg: </span><br><span class="line">password: </span><br><span class="line">toc: false</span><br><span class="line">mathjax: false</span><br><span class="line">summary: hexo+matery个人主页操作总结</span><br><span class="line">categories: hexo</span><br><span class="line">tags:</span><br><span class="line">  - hexo</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"># Your Content...</span><br><span class="line">......</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-css"><code class="language-css">---
+<span class="token property">title</span><span class="token punctuation">:</span> hexo的个性化配置
+<span class="token property">date</span><span class="token punctuation">:</span> 
+<span class="token property">author</span><span class="token punctuation">:</span> Messi
+<span class="token property">img</span><span class="token punctuation">:</span> 
+<span class="token property">top</span><span class="token punctuation">:</span> true
+<span class="token property">cover</span><span class="token punctuation">:</span> true
+<span class="token property">coverImg</span><span class="token punctuation">:</span> 
+<span class="token property">password</span><span class="token punctuation">:</span> 
+<span class="token property">toc</span><span class="token punctuation">:</span> false
+<span class="token property">mathjax</span><span class="token punctuation">:</span> false
+<span class="token property">summary</span><span class="token punctuation">:</span> hexo+matery个人主页操作总结
+<span class="token property">categories</span><span class="token punctuation">:</span> hexo
+<span class="token property">tags</span><span class="token punctuation">:</span>
+  - hexo
+---
+
+# Your Content<span class="token number">...</span>
+<span class="token number">......</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
 </ol>
 <hr>
 <h1 id="网站封面图片"><a href="#网站封面图片" class="headerlink" title="网站封面图片"></a>网站封面图片</h1><p>在<code>myblog\themes\matery\source\medias\banner</code>文件夹下，把每日更换背景图片设置为false后，会默认使用”0.jpg”这张图片，更换为自己喜欢的壁纸即可。</p>
 <hr>
 <h1 id="首页背景图片"><a href="#首页背景图片" class="headerlink" title="首页背景图片"></a>首页背景图片</h1><p>在<code>themes\Matery\source\css\matery.css</code>，ctrl+F快捷键查找body，修改样式如下：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(<span class="number">60deg</span>, <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">165</span>, <span class="number">150</span>, <span class="number">0.5</span>) <span class="number">5%</span>, <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">228</span>, <span class="number">255</span>, <span class="number">0.35</span>)) <span class="number">0%</span> <span class="number">0%</span> / cover, <span class="built_in">url</span>(<span class="string">&quot;https://ae01.alicdn.com/kf/H18a4b998752a4ae68b8e85d432a5aef0l.png&quot;</span>), <span class="built_in">url</span>(<span class="string">&quot;https://ae01.alicdn.com/kf/H21b5f6b8496141a1979a33666e1074d9x.jpg&quot;</span>) <span class="number">0px</span> <span class="number">0px</span>;</span><br><span class="line">    <span class="attribute">background-attachment</span>: fixed;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#7F95D1</span>;</span><br><span class="line">    <span class="comment">/* background-color: #eaeaea;</span></span><br><span class="line"><span class="comment">    margin: 0;</span></span><br><span class="line"><span class="comment">    color: #34495e;</span></span><br><span class="line"><span class="comment">    overflow-x: hidden;</span></span><br><span class="line"><span class="comment">    overflow-y: auto; */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-css"><code class="language-css">body &amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">linear-gradient</span><span class="token punctuation">(</span><span class="token number">60</span>deg, <span class="token function">rgba</span><span class="token punctuation">(</span><span class="token number">255</span>, <span class="token number">165</span>, <span class="token number">150</span>, <span class="token number">0.5</span><span class="token punctuation">)</span> <span class="token number">5%</span>, <span class="token function">rgba</span><span class="token punctuation">(</span><span class="token number">0</span>, <span class="token number">228</span>, <span class="token number">255</span>, <span class="token number">0.35</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token number">0%</span> <span class="token number">0%</span> / cover, <span class="token url">url("https://ae01.alicdn.com/kf/H18a4b998752a4ae68b8e85d432a5aef0l.png")</span>, <span class="token url">url("https://ae01.alicdn.com/kf/H21b5f6b8496141a1979a33666e1074d9x.jpg")</span> <span class="token number">0</span>px <span class="token number">0</span>px<span class="token punctuation">;</span>
+    <span class="token property">background-attachment</span><span class="token punctuation">:</span> fixed<span class="token punctuation">;</span>
+    <span class="token property">margin</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> <span class="token hexcode">#7F95D1</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">/* background-color: #eaeaea;
+    margin: 0;
+    color: #34495e;
+    overflow-x: hidden;
+    overflow-y: auto; */</span>
+&amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <hr>
 <h1 id="修改导航栏、页脚及文章卡片标签的颜色"><a href="#修改导航栏、页脚及文章卡片标签的颜色" class="headerlink" title="修改导航栏、页脚及文章卡片标签的颜色"></a>修改导航栏、页脚及文章卡片标签的颜色</h1><p>在<code>matery.css</code>中找到<code>.bg-color</code>,修改即可：<br>我这里调整成了动态渐变，颜色参考了<a target="_blank" rel="noopener" href="https://www.antmoe.com/posts/7198453/index.html">Hexo 博客之 butterfly 主题优雅更换背景</a></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 动态渐变 */</span></span><br><span class="line"><span class="keyword">@keyframes</span> gradientBG &#123;</span><br><span class="line">    <span class="number">0%</span> &#123;</span><br><span class="line">      <span class="attribute">background-position</span>: <span class="number">0%</span> <span class="number">50%</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="number">50%</span> &#123;</span><br><span class="line">      <span class="attribute">background-position</span>: <span class="number">100%</span> <span class="number">50%</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="number">100%</span> &#123;</span><br><span class="line">      <span class="attribute">background-position</span>: <span class="number">0%</span> <span class="number">50%</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.bg-color</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(-<span class="number">45deg</span>, <span class="number">#ee7752</span>, <span class="number">#e73c7e</span>, <span class="number">#23a6d5</span>, <span class="number">#23d5ab</span>);</span><br><span class="line">    <span class="attribute">background-size</span>: <span class="number">400%</span> <span class="number">400%</span>;</span><br><span class="line">    <span class="attribute">animation</span>: gradientBG <span class="number">15s</span> ease infinite;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-css"><code class="language-css"><span class="token comment" spellcheck="true">/* 动态渐变 */</span>
+<span class="token atrule"><span class="token rule">@keyframes</span> gradientBG &amp;#123<span class="token punctuation">;</span></span>
+    <span class="token number">0%</span> &amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>
+      <span class="token property">background-position</span><span class="token punctuation">:</span> <span class="token number">0%</span> <span class="token number">50%</span><span class="token punctuation">;</span>
+    &amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>
+    <span class="token number">50%</span> &amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>
+      <span class="token property">background-position</span><span class="token punctuation">:</span> <span class="token number">100%</span> <span class="token number">50%</span><span class="token punctuation">;</span>
+    &amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>
+    <span class="token number">100%</span> &amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>
+      <span class="token property">background-position</span><span class="token punctuation">:</span> <span class="token number">0%</span> <span class="token number">50%</span><span class="token punctuation">;</span>
+    &amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>
+  &amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>
 
+<span class="token number">.</span>bg-color &amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">linear-gradient</span><span class="token punctuation">(</span>-<span class="token number">45</span>deg, <span class="token hexcode">#ee7752</span>, <span class="token hexcode">#e73c7e</span>, <span class="token hexcode">#23a6d5</span>, <span class="token hexcode">#23d5ab</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">background-size</span><span class="token punctuation">:</span> <span class="token number">400%</span> <span class="token number">400%</span><span class="token punctuation">;</span>
+    <span class="token property">animation</span><span class="token punctuation">:</span> gradientBG <span class="token number">15</span>s ease infinite<span class="token punctuation">;</span>
+&amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h1 id="附：采坑总结"><a href="#附：采坑总结" class="headerlink" title="附：采坑总结"></a>附：采坑总结</h1><ol>
+<li><p>使用hexo-prism-plugin代码高亮插件美化代码块时，默认代码高亮和拓展插件都不起作用。该插件作者几年前就已经探讨过原因和解决方案：<strong>解决的办法是安装hexo-inject，进入到博客项目目录，命令行输入：</strong></p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">npm</span> i hexo-inject -s
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+</ol>
 
                 
             </div>
@@ -340,7 +389,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://Yunchang-Liu.github.io/2022/10/11/hexo%20summary/">https://Yunchang-Liu.github.io/2022/10/11/hexo%20summary/</a>
+                    <a href="https://Yunchang-Liu.github.io/2022/10/11/hexo-summary/">https://Yunchang-Liu.github.io/2022/10/11/hexo-summary/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -428,7 +477,7 @@
                 <i class="far fa-dot-circle"></i>&nbsp;Current
             </div>
             <div class="card">
-                <a href="/2022/10/11/hexo%20summary/">
+                <a href="/2022/10/11/hexo-summary/">
                     <div class="card-image">
                         
                         
@@ -556,28 +605,30 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">486</span>&nbsp;字
+                class="white-color">588</span>&nbsp;字
             
             
             
             
-            <!-- <span id="busuanzi_container_site_pv">
+            
+            
+            <span id="busuanzi_container_site_pv">
                 |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
                     class="white-color"></span>&nbsp;次
-            </span> -->
+            </span>
             
             
-            <!-- <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_container_site_uv">
                 |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
                     class="white-color"></span>&nbsp;人
-            </span> -->
+            </span>
             
             <br>
             
             <br>
             
         </div>
-        <div class="col s12 m4 l4 social-link ">
+        <div class="col s12 m4 l4 social-link social-statis">
     <a href="https://github.com/Yunchang-Liu" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
         <i class="fab fa-github"></i>
     </a>
@@ -748,6 +799,8 @@ $(function () {
     <script src="/libs/others/clicklove.js" async="async"></script>
     
     
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
 
     
 
@@ -761,7 +814,7 @@ $(function () {
     
 
     
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    <script src="/libs/instantpage/instantpage.js" type="module"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
 
 </body>
