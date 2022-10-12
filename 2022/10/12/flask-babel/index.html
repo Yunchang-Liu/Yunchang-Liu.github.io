@@ -1,0 +1,967 @@
+<!DOCTYPE HTML>
+<html lang="en, zh-CN">
+
+
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="keywords" content="一文搞懂利用Flask-Babel实现网页多语言翻译切换, Yunchang">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>一文搞懂利用Flask-Babel实现网页多语言翻译切换 | Yunchang</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Yunchang</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Yunchang</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">一文搞懂利用Flask-Babel实现网页多语言翻译切换</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="container content">
+
+    
+    <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/flask/">
+                                <span class="chip bg-color">flask</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/flask/" class="post-category">
+                                flask
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2022-10-12
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
+                    2022-10-12
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+                    2.2k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
+                    8 Min
+                </div>
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>课程设计总是Flask开发。。网站经常要求双语翻译，开发中英文两份html自然是最麻烦的方法，而babel库的使用就是一个熟练工。本文将详细总结使用flask_babel库进行多语种切换的方法，以英文切换成中文为例。</p>
+<hr>
+<h1 id="一、安装flask-babel"><a href="#一、安装flask-babel" class="headerlink" title="一、安装flask_babel"></a>一、安装flask_babel</h1><p>我使用的编译器是pycharm， 在虚拟环境终端<code>pip install flask_babel</code>，稍等片刻即下载成功。</p>
+<hr>
+<h1 id="二、在flask项目应用babel"><a href="#二、在flask项目应用babel" class="headerlink" title="二、在flask项目应用babel"></a>二、在flask项目应用babel</h1><p>这里用一个常见的例子，以下代码出自app.py，即flask项目的启动文件。</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask<span class="token punctuation">,</span> render_template<span class="token punctuation">,</span> request
+
+<span class="token keyword">from</span> flask_babel <span class="token keyword">import</span> Babel<span class="token punctuation">,</span> gettext <span class="token keyword">as</span> _
+
+app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+app<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'BABEL_DEFAULT_LOCALE'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'en'</span>
+app<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'BABEL_DEFAULT_TIMEZONE'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'UTC'</span>
+
+babel <span class="token operator">=</span> Babel<span class="token punctuation">(</span>app<span class="token punctuation">)</span>
+
+
+@babel<span class="token punctuation">.</span>localeselector
+<span class="token keyword">def</span> <span class="token function">get_locale</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> request<span class="token punctuation">.</span>accept_languages<span class="token punctuation">.</span>best_match<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'zh'</span><span class="token punctuation">,</span> <span class="token string">'en'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+@app<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    day <span class="token operator">=</span> _<span class="token punctuation">(</span><span class="token string">"Saturday"</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'index.html'</span><span class="token punctuation">,</span> day<span class="token operator">=</span>day<span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    app<span class="token punctuation">.</span>debug <span class="token operator">=</span> <span class="token boolean">True</span>
+    app<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>下面分步骤详细解释：</p>
+<ol>
+<li><strong>从 flask_babel 引入 Babel 模块和 gettext 函数，由于 gettext 函数被引用的次数太多了，为了方便手写，一般将其重命名为 <code>“_”</code></strong></li>
+<li><strong>设置babel默认的地区语言和区时(可不设置)</strong><pre class="line-numbers language-python"><code class="language-python">app<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'BABEL_DEFAULT_LOCALE'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'en'</span>
+app<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'BABEL_DEFAULT_TIMEZONE'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'UTC'</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li><strong>初始化 babel 应用</strong><pre class="line-numbers language-python"><code class="language-python">babel <span class="token operator">=</span> Babel<span class="token punctuation">(</span>app<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><strong>定义一个函数来实现地区语言选择</strong><br>使用babel库自带的<code>@babel.localeselector</code>来修饰函数，<strong>此函数会在所有路由函数运行前执行</strong>。 <code>request.accept_languages.best_match([&#39;zh&#39;, &#39;en&#39;])</code>函数会调用当前浏览器的默认语言，然后将其设置为当前语言。例如下图的情况，此函数返回值为<code>“zh_CN”</code><br><img src="https://img-blog.csdnimg.cn/1283d83359924948a2a9c261ecf20261.png"></li>
+</ol>
+<hr>
+<h1 id="三、生成翻译模板"><a href="#三、生成翻译模板" class="headerlink" title="三、生成翻译模板"></a>三、生成翻译模板</h1><ol>
+<li>把所有需要翻译的html中的文字用<code>&#123;&#123; _( " 翻译文字")  &#125;&#125;</code>框起来，<strong>别忘前面的下划线</strong><br><img src="https://img-blog.csdnimg.cn/5280e3ed21d4425bacdf28430ab84a1d.png"><br>这是一项十分繁琐的工作，在pycharm<font color='red'><strong>可以先用鼠标选中待翻译文字，然后按住shift的同时按两下&quot;{&quot;（左花括号），再按一下&quot;(&quot;（左括号），再按一下”（左引号），最后再左括号前面加下划线即可</strong></font>。</li>
+<li><strong>在 app.py 的同级目录创建一个叫 babel.cfg 的文件，内容如下</strong><pre class="line-numbers language-python"><code class="language-python"><span class="token punctuation">[</span>python<span class="token punctuation">:</span> <span class="token operator">**</span><span class="token punctuation">.</span>py<span class="token punctuation">]</span>
+<span class="token punctuation">[</span>jinja2<span class="token punctuation">:</span> <span class="token operator">**</span><span class="token operator">/</span>templates<span class="token operator">/</span><span class="token operator">**</span><span class="token punctuation">.</span>html<span class="token punctuation">]</span>  
+extensions<span class="token operator">=</span>jinja2<span class="token punctuation">.</span>ext<span class="token punctuation">.</span>autoescape<span class="token punctuation">,</span>jinja2<span class="token punctuation">.</span>ext<span class="token punctuation">.</span>with_
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+目录可以根据实际情况修改，例如**<code>/templates/news/</code>**只翻译news里的所有html.</li>
+<li><strong>在终端执行输入以下代码生成翻译模板，<font color='red'>即提取所有框起来的文字</font></strong><pre class="line-numbers language-python"><code class="language-python">pybabel extract <span class="token operator">-</span>F babel<span class="token punctuation">.</span>cfg <span class="token operator">-</span>o messages<span class="token punctuation">.</span>pot <span class="token punctuation">.</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+ 执行完后会在app.py同级目录下产生一个新文件<code>messages.pot</code>，其中含有所有需要翻译的文字空白模板，<font color='red'>此文件不需要任何操作!</font></li>
+<li><strong>在终端输入一下代码， 创建中文翻译</strong><br> <code>python  pybabel init -i messages.pot -d translations -l zh_CN  </code>	<br> 此时会在app.py同级目录产生一个新的translation文件夹，结构如下。LC开头的文件夹下还有一个名为message.po的文件。<br> <img src="https://img-blog.csdnimg.cn/8bca9e048f3a4613a1217e5f984a3156.png"></li>
+<li><strong>手动添加翻译</strong><br>是的你没有看错！还是需要手动翻译！<br>在message.po中，<strong>msgid对应的是提取出的待翻译的词，msgstr是需要我们手动填入的翻译结果</strong>。 我们需要做的就是把所有词对应翻译好。<br><img src="https://img-blog.csdnimg.cn/843f72b49df4473aa2cbc81c12ffe747.png"></li>
+<li><strong>在终端执行以下命令，编译翻译结果</strong><br> <code>python  pybabel compile -d translations  </code>	<br> 执行完后会生成一个messages.mo的编译文件，此文件生成即代表翻译结束！<br> <img src="https://img-blog.csdnimg.cn/522f8cfc82ea49328505c945d8d4eb81.png"></li>
+</ol>
+<hr>
+<h1 id="四、运行flask项目"><a href="#四、运行flask项目" class="headerlink" title="四、运行flask项目"></a>四、运行flask项目</h1><p>大功告成，此时运行flask项目，虽然我们默认的babel地区语言是\‘en\’英文，但get_locale函数会获取到我们的浏览器推荐语言，返回&quot;zh_CN&quot;，所以页面将会呈现中文翻译。</p>
+<hr>
+<h1 id="五、翻译的更新或修改"><a href="#五、翻译的更新或修改" class="headerlink" title="五、翻译的更新或修改"></a>五、翻译的更新或修改</h1><p>很简单，如果需要增加翻译，首先去相应的html用之前相同的方法把需要翻译的内容框起来。然后重新执行一次翻译模板提取语句：</p>
+<pre class="line-numbers language-python"><code class="language-python">    pybabel extract <span class="token operator">-</span>F babel<span class="token punctuation">.</span>cfg <span class="token operator">-</span>o messages<span class="token punctuation">.</span>pot <span class="token punctuation">.</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>message.pot文件会更新， 此时再执行一次翻译更新语句：</p>
+<pre class="line-numbers language-python"><code class="language-python">    pybabel update <span class="token operator">-</span>i messages<span class="token punctuation">.</span>pot <span class="token operator">-</span>d translations
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>此命令可以将之前的翻译合并到新的文件中，<strong>此时translation文件夹中的messages.po文件会更新，在其中将需要添加的翻译补充上，或是将需要修改的翻译修改即可</strong>。</p>
+<p>最后再次执行编译语句，更新完成！</p>
+<pre class="line-numbers language-python"><code class="language-python">    pybabel compile <span class="token operator">-</span>d translations
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<hr>
+<h1 id="六、翻译套路总结"><a href="#六、翻译套路总结" class="headerlink" title="六、翻译套路总结"></a>六、翻译套路总结</h1><p>固定套路：flask_babel配置好以后</p>
+<ol>
+<li><code>pybabel extract -F babel.cfg -o messages.pot .</code>  <strong>提取翻译模板</strong></li>
+<li><code>pybabel init -i messages.pot -d translations -l zh</code>  <strong>生成需要翻译成的语言模板</strong></li>
+<li>在对应文件夹中修改messages.po  <strong>添加相应翻译</strong></li>
+<li><code>pybabel compile -d translations</code>  <strong>编译生成翻译文件</strong></li>
+</ol>
+<p>修改翻译套路 (如果没有添加 1、2、3可省略)：</p>
+<ol>
+<li><strong>添加或改变html中框起来的文字</strong></li>
+<li><code>pybabel extract -F babel.cfg -o messages.pot .</code>  <strong>重新提取翻译模板</strong></li>
+<li><code>pybabel update -i messages.pot -d translations</code> <strong>合并更新翻译</strong></li>
+<li>在对应文件夹中编辑messages.po  <strong>添加或修改相应翻译</strong></li>
+<li><code>pybabel compile -d translations</code>  <strong>重新编译生成翻译文件</strong></li>
+</ol>
+<hr>
+<h1 id="拓展：在页面中实现手动切换语言"><a href="#拓展：在页面中实现手动切换语言" class="headerlink" title="拓展：在页面中实现手动切换语言"></a>拓展：在页面中实现手动切换语言</h1><p>这里简单介绍我采用的思路，我们的页面右上角有一个select下拉框（如下），用于点击切换语言。<strong>在某一页点击后，整个页面的语言就会切换</strong>，已中英切换为例。<br><img src="https://img-blog.csdnimg.cn/80e96b88cf3e4489b7e948201be13721.png"></p>
+<ol>
+<li><p><strong>首先给select下选框添加一个id，方便定位</strong><br><img src="https://img-blog.csdnimg.cn/e7442baafcce40b1b5b9f9a83c697d46.png"></p>
+</li>
+<li><p><strong>之后修改get_locale函数并且新建一个函数set_locale</strong> ，代码如下<br><br><font color='red'><strong>set_locale函数是点击切换语言后，利用ajax调用的函数。它会首先获取前端传递过来的语言，然后判断语言，利用response给页面设置一个cookie，用来标识当前页面应该翻译成的语言。</strong></font><br><br><font color='red'><strong>get_locale函数中获取前面设置的cookie值，然后返回cookie值中的语言，zh_CN或en，也就是设置当前babel的语言</strong></font></p>
+<pre class="line-numbers language-python"><code class="language-python">@babel<span class="token punctuation">.</span>localeselector
+<span class="token keyword">def</span> <span class="token function">get_locale</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    cookie <span class="token operator">=</span> request<span class="token punctuation">.</span>cookies<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'locale'</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> cookie <span class="token keyword">in</span> <span class="token punctuation">[</span><span class="token string">'zh_CN'</span><span class="token punctuation">,</span> <span class="token string">'en'</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> cookie
+    <span class="token keyword">return</span> request<span class="token punctuation">.</span>accept_languages<span class="token punctuation">.</span>best_match<span class="token punctuation">(</span>app<span class="token punctuation">.</span>config<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'BABEL_DEFAULT_LOCALE'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 没有cookie时，默认为 en</span>
+
+
+@app<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">"/set_locale"</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">set_locale</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    lang <span class="token operator">=</span> request<span class="token punctuation">.</span>args<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"language"</span><span class="token punctuation">)</span>
+    response <span class="token operator">=</span> make_response<span class="token punctuation">(</span>jsonify<span class="token punctuation">(</span>message<span class="token operator">=</span>lang<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> lang <span class="token operator">==</span> <span class="token string">'English'</span><span class="token punctuation">:</span>
+        refresh<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        response<span class="token punctuation">.</span>set_cookie<span class="token punctuation">(</span><span class="token string">'locale'</span><span class="token punctuation">,</span> <span class="token string">'en'</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> response
+
+    <span class="token keyword">if</span> lang <span class="token operator">==</span> <span class="token string">'汉语'</span><span class="token punctuation">:</span>
+        refresh<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        response<span class="token punctuation">.</span>set_cookie<span class="token punctuation">(</span><span class="token string">'locale'</span><span class="token punctuation">,</span> <span class="token string">'zh_CN'</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> response
+
+    <span class="token keyword">return</span> jsonify<span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;"data": "success"&amp;#125;)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p><strong>js代码，设置select下拉框的change函数，一旦当前选择改变（切换语言），就用ajax调用上面的set_locale函数。</strong></p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script<span class="token operator">></span>
+    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#language_switch"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">change</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        $<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            url<span class="token punctuation">:</span> <span class="token string">'/set_locale'</span><span class="token punctuation">,</span>
+            type<span class="token punctuation">:</span> <span class="token string">'GET'</span><span class="token punctuation">,</span>
+            data<span class="token punctuation">:</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token string">"language"</span><span class="token punctuation">:</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">val</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
+            success<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>ret<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+                location<span class="token punctuation">.</span><span class="token function">reload</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>下拉框改变后，右上角显示的语言也需要改变。例如点击汉语，右上角就需要一直显示汉语。一般需要用js来实现动态改变。这里有个<strong>小技巧</strong>：<font color='red'><strong>可以将English和汉语都用<code>&#123;&#123; _(" ") &#125;&#125;</code>框起来进行翻译，English翻译成汉语，汉语翻译成中文，这样就实现了动态改变！</strong></font></p>
+</li>
+</ol>
+<hr>
+<h1 id="部分效果图"><a href="#部分效果图" class="headerlink" title="部分效果图"></a>部分效果图</h1><p><img src="https://img-blog.csdnimg.cn/0816b9e24edb4777873cf6e52fbf752d.png" alt="部分效果图"><br><img src="https://img-blog.csdnimg.cn/c9d9b2123b2e45418a08722263f7d86a.png" alt="部分效果图"></p>
+<hr>
+<h1 id="踩坑总结"><a href="#踩坑总结" class="headerlink" title="踩坑总结"></a>踩坑总结</h1><ol>
+<li><p>在更新翻译时，有的词汇框起来后，提取后但并没有在messages.po中发现，一般是因为#, fuzzy关键字。此关键字我的理解是<font color='red'><strong>它会判断出一些重复的字词，然后将其按照你之前的翻译进行自动翻译。但有时会不准确（经常。。)</strong></font>  如以下图片中，原文和自动翻译不符。删掉这一行(红色框起来的部分)即可。<br><img src="https://img-blog.csdnimg.cn/c84cb6b608524c86820f0b9e2708f0c0.png"></p>
+</li>
+<li><p>课设开发时需要使用git，我为了防止代码在merge时出问题，一般会将整个项目文件夹复制备份。这种情况下，我有时会遇到执行pybabel extract -F babel.cfg -o messages.pot . 提取命令没有反应的情况。多次观察后发现，我<strong>在源项目中执行这个语句，结果在备份文件夹中新建了messages.po文件。目前为止原因，可能是它会自动寻找路径，但由于我两份项目文件夹是复制，它就找错了根目录。</strong></p>
+</li>
+<li><p><font color='red'>遇到特殊符号，例如原文或翻译中带有单引号’或双引号”等，要用转义字符反斜杠\进行转义，否则会报错。</font></p>
+</li>
+<li><p>大段文字直接框选即可，不用担心行间空格，没有影响。<br><img src="https://img-blog.csdnimg.cn/e6fad8788c6c4ef7bd937a117ecd1a27.png"></p>
+</li>
+<li><p>字符等建议不框起来，只框纯文字部分，这样后面翻译也好操作。例如<code>“单位：$”</code>，只需按照<code>&#123;&#123; _(\"单位") &#125;&#125;</code>操作即可。</p>
+</li>
+<li><p>极少数情况下设置好zh_CN语言页面却没有翻译，那么可以将上面的zh_CN改成<strong>zh_Hans_CN</strong>用同样的方法生成文件夹进行翻译。但据我观察zh_CN生成的messages.po文件中自动标识的语言也是zh_Hans_CN，所以此问题可能一般不会遇见。</p>
+</li>
+</ol>
+<p><strong>最后推荐另一篇好文<a target="_blank" rel="noopener" href="https://huyu.info/blog/detail/101">Flask-Babel实现国际化</a>，欢迎大家交流指正！</strong></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Messi</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://Yunchang-Liu.github.io/2022/10/12/flask-babel/">https://Yunchang-Liu.github.io/2022/10/12/flask-babel/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint polocy. If reproduced, please indicate source
+                    <a href="/about" target="_blank">Messi</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/flask/">
+                                    <span class="chip bg-color">flask</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
+            <div class="card">
+                <a href="/2022/10/12/flask-babel/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="一文搞懂利用Flask-Babel实现网页多语言翻译切换">
+                        
+                        <span class="card-title">一文搞懂利用Flask-Babel实现网页多语言翻译切换</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Flask-Babel
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-12
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/flask/" class="post-category">
+                                    flask
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/flask/">
+                        <span class="chip bg-color">flask</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/10/11/hexo-summary/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="hexo+matery个人主页操作总结">
+                        
+                        <span class="card-title">hexo+matery个人主页操作总结</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            hexo+matery个人主页操作总结
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-11
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/hexo/" class="post-category">
+                                    hexo
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/hexo/">
+                        <span class="chip bg-color">hexo</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2022</span>
+            
+            <span id="year">2022</span>
+            <a href="/about" target="_blank">Messi</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">2.8k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2022";
+                    var startMonth = "10";
+                    var startDate = "10";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Yunchang-Liu" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1422857525@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+    <a href="https://blog.csdn.net/m0_46684880" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN" data-position="top" data-delay="50">
+        <i class="fab fa-csdn">C</i>
+    </a>
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</body>
+
+</html>
