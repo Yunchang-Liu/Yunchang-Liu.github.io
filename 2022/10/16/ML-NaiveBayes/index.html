@@ -1,0 +1,984 @@
+<!DOCTYPE HTML>
+<html lang="en, zh-CN">
+
+
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="keywords" content="机器学习之朴素贝叶斯, Yunchang">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>机器学习之朴素贝叶斯 | Yunchang</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Yunchang</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Yunchang</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">机器学习之朴素贝叶斯</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="container content">
+
+    
+    <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                <span class="chip bg-color">机器学习</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                机器学习
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2022-10-16
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
+                    2022-10-16
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+                    2.5k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
+                    9 Min
+                </div>
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="一、朴素贝叶斯基本介绍"><a href="#一、朴素贝叶斯基本介绍" class="headerlink" title="一、朴素贝叶斯基本介绍"></a>一、朴素贝叶斯基本介绍</h1><p><strong>Naive Bayesian Model</strong></p>
+<ol>
+<li>只能解决分类问题</li>
+<li>监督学习算法</li>
+</ol>
+<p><strong>（概率模型，不需要数据归一化）</strong></p>
+<hr>
+<h1 id="二、朴素贝叶斯分类原理"><a href="#二、朴素贝叶斯分类原理" class="headerlink" title="二、朴素贝叶斯分类原理"></a>二、朴素贝叶斯分类原理</h1><h2 id="1-贝叶斯决策理论"><a href="#1-贝叶斯决策理论" class="headerlink" title="1. 贝叶斯决策理论"></a>1. 贝叶斯决策理论</h2><p>假设一个数据集有两个类别C1和C2，对于一个新的测试点(x,y)</p>
+<ul>
+<li>若p1(x,y)&gt;p2(x,y)，那么类别为C1</li>
+<li>若p1(x,y)&lt;p2(x,y)，那么类别为C2</li>
+</ul>
+<p><font color='red'><strong>即选择具有最高概率的类别作为决策！</strong></font></p>
+<h2 id="2-贝叶斯推断"><a href="#2-贝叶斯推断" class="headerlink" title="2. 贝叶斯推断"></a>2. 贝叶斯推断</h2><p><strong>贝叶斯定理</strong>（即条件概率计算公式）：<br><img src="https://img-blog.csdnimg.cn/9629ea5accb142f5a71c7abd4604a207.png"><br>简单变形：<br><img src="https://img-blog.csdnimg.cn/2478822323e8434ebdda5bbf2cb8cefd.png"><br>P(A)称为 <strong>“先验概率”（Prior probability）</strong>，即在B事件发生之前，我们对A事件概率的一个判断。</p>
+<p>P(A|B)称为 <strong>“后验概率”（Posterior probability）</strong>，即在B事件发生之后，我们对A事件概率的重新评估。</p>
+<p>P(B|A)&#x2F;P(B)称为 <strong>“可能性函数”（Likelyhood）</strong>，这是一个调整因子，使得预估概率更接近真实概率。</p>
+<pre><code>后验概率　＝　先验概率 ｘ 调整因子
+</code></pre>
+<p>我们先预估一个”先验概率”，然后加入实验结果，看这个实验到底是增强还是削弱了”先验概率”，由此得到更接近事实的”后验概率”。如果”可能性函数”P(B|A)&#x2F;P(B)&gt;1，意味着”先验概率”被增强，事件A的发生的可能性变大；如果”可能性函数”&#x3D;1，意味着B事件无助于判断事件A的可能性；如果”可能性函数”&lt;1，意味着”先验概率”被削弱，事件A的可能性变小。</p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>两个一模一样的碗，一号碗（H1）有30颗水果糖和10颗巧克力糖，二号碗（H2）有水果糖（E）和巧克力糖各20颗。现在随机选择一个碗，从中摸出一颗糖，发现是水果糖。请问这颗水果糖来自一号碗的概率有多大？<br><img src="https://img-blog.csdnimg.cn/cdde8f5ff5504e30878a6582388ad643.png"></p>
+<p>由于这两个碗是一样的，所以P(H1)&#x3D;P(H2)，也就是说，在取出水果糖之前，这两个碗被选中的概率相同。因此，P(H1)&#x3D;0.5，我们把这个概率就叫做”先验概率”，即没有做实验之前，来自一号碗的概率是0.5。问题变成了已知E的情况下，来自一号碗的概率有多大，即求P(H1|E)。我们把这个概率叫做”后验概率”，即在E事件发生之后，对P(H1)的修正。公式为：<br><img src="https://img-blog.csdnimg.cn/478225a4d7844aedabd3412feb37906c.png"><br><font color='red'><strong>在实际应用中，我们往往只需要知道所属类别，而不需要计算具体的类别概率。</strong></font>在上式中，因为两个碗相同，只需要比较 P(H1|E)和P(H2|E)的大小，找到那个更大的概率就可以。既然如此，两者的分母P(E)都是相同的，那我们<strong>只需要比较分子即可，即比较P(E|H1)P(H1)和P(E|H2)P(H2)的大小</strong>，所以为了减少计算量，全概率公式在实际编程中可以不使用，即<strong>分母不需要计算</strong>。<font color='red'><strong>问题转化成如何基于训练数据D来估计先验概率P(c)和似然P(X|c)</strong></font></p>
+<h2 id="3-朴素贝叶斯推断"><a href="#3-朴素贝叶斯推断" class="headerlink" title="3. 朴素贝叶斯推断"></a>3. 朴素贝叶斯推断</h2><p><strong>朴素</strong>贝叶斯对条件个概率分布做了<strong>条件独立性的假设</strong>。<br><img src="https://img-blog.csdnimg.cn/9c2f4be5f3a2474bbc27e9cbe80c23bf.png" alt="假设条件独立"><br>由于每个特征都是独立的，我们可以将分子上的条件概率进行拆分。</p>
+<hr>
+<h1 id="三、手写朴素贝叶斯分类器"><a href="#三、手写朴素贝叶斯分类器" class="headerlink" title="三、手写朴素贝叶斯分类器"></a>三、手写朴素贝叶斯分类器</h1><pre class="line-numbers language-python"><code class="language-python"><span class="token string">""</span>"
+<span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+
+<span class="token keyword">def</span> <span class="token function">loadDataSet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    postingList <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">'my'</span><span class="token punctuation">,</span> <span class="token string">'dog'</span><span class="token punctuation">,</span> <span class="token string">'has'</span><span class="token punctuation">,</span> <span class="token string">'flea'</span><span class="token punctuation">,</span> <span class="token string">'problems'</span><span class="token punctuation">,</span> <span class="token string">'help'</span><span class="token punctuation">,</span> <span class="token string">'please'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                   <span class="token punctuation">[</span><span class="token string">'maybe'</span><span class="token punctuation">,</span> <span class="token string">'not'</span><span class="token punctuation">,</span> <span class="token string">'take'</span><span class="token punctuation">,</span> <span class="token string">'him'</span><span class="token punctuation">,</span> <span class="token string">'to'</span><span class="token punctuation">,</span> <span class="token string">'dog'</span><span class="token punctuation">,</span> <span class="token string">'park'</span><span class="token punctuation">,</span> <span class="token string">'stupid'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                   <span class="token punctuation">[</span><span class="token string">'my'</span><span class="token punctuation">,</span> <span class="token string">'dalmation'</span><span class="token punctuation">,</span> <span class="token string">'is'</span><span class="token punctuation">,</span> <span class="token string">'so'</span><span class="token punctuation">,</span> <span class="token string">'cute'</span><span class="token punctuation">,</span> <span class="token string">'I'</span><span class="token punctuation">,</span> <span class="token string">'love'</span><span class="token punctuation">,</span> <span class="token string">'him'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                   <span class="token punctuation">[</span><span class="token string">'stop'</span><span class="token punctuation">,</span> <span class="token string">'posting'</span><span class="token punctuation">,</span> <span class="token string">'stupid'</span><span class="token punctuation">,</span> <span class="token string">'worthless'</span><span class="token punctuation">,</span> <span class="token string">'garbage'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                   <span class="token punctuation">[</span><span class="token string">'mr'</span><span class="token punctuation">,</span> <span class="token string">'licks'</span><span class="token punctuation">,</span> <span class="token string">'ate'</span><span class="token punctuation">,</span> <span class="token string">'my'</span><span class="token punctuation">,</span> <span class="token string">'steak'</span><span class="token punctuation">,</span> <span class="token string">'how'</span><span class="token punctuation">,</span> <span class="token string">'to'</span><span class="token punctuation">,</span> <span class="token string">'stop'</span><span class="token punctuation">,</span> <span class="token string">'him'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                   <span class="token punctuation">[</span><span class="token string">'quit'</span><span class="token punctuation">,</span> <span class="token string">'buying'</span><span class="token punctuation">,</span> <span class="token string">'worthless'</span><span class="token punctuation">,</span> <span class="token string">'dog'</span><span class="token punctuation">,</span> <span class="token string">'food'</span><span class="token punctuation">,</span> <span class="token string">'stupid'</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+    classVec <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span>    <span class="token comment" spellcheck="true"># 1代表侮辱性文字, 0代表正常言论</span>
+    <span class="token keyword">return</span> postingList<span class="token punctuation">,</span> classVec
+
+
+<span class="token comment" spellcheck="true"># 创建包含在所有文档中的词汇表（不重复）</span>
+<span class="token keyword">def</span> <span class="token function">createVocabList</span><span class="token punctuation">(</span>dataSet<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    vocabSet <span class="token operator">=</span> set<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>      <span class="token comment" spellcheck="true"># 创建一个空的不重复列表</span>
+    <span class="token keyword">for</span> document <span class="token keyword">in</span> dataSet<span class="token punctuation">:</span>
+        vocabSet <span class="token operator">=</span> vocabSet <span class="token operator">|</span> set<span class="token punctuation">(</span>document<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 求并集</span>
+    <span class="token keyword">return</span> list<span class="token punctuation">(</span>vocabSet<span class="token punctuation">)</span>
+
+
+<span class="token comment" spellcheck="true"># 根据vocabList词汇表，将inputSet向量化，向量的每个元素为1或0</span>
+<span class="token keyword">def</span> <span class="token function">setOfWords2Vec</span><span class="token punctuation">(</span>vocabList<span class="token punctuation">,</span> inputSet<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    returnVec <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> len<span class="token punctuation">(</span>vocabList<span class="token punctuation">)</span>                                 <span class="token comment" spellcheck="true"># 创建一个其中所含元素都为0的向量</span>
+    <span class="token keyword">for</span> word <span class="token keyword">in</span> inputSet<span class="token punctuation">:</span>                                            <span class="token comment" spellcheck="true"># 遍历每个词条</span>
+        <span class="token keyword">if</span> word <span class="token keyword">in</span> vocabList<span class="token punctuation">:</span>                                        <span class="token comment" spellcheck="true"># 如果词条存在于词汇表中，则设为1</span>
+            returnVec<span class="token punctuation">[</span>vocabList<span class="token punctuation">.</span>index<span class="token punctuation">(</span>word<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"the word: %s is not in my Vocabulary!"</span> <span class="token operator">%</span> word<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> returnVec                                                 <span class="token comment" spellcheck="true"># 返回文档向量</span>
+
+
+<span class="token comment" spellcheck="true"># 函数说明: 朴素贝叶斯分类器训练函数</span>
+<span class="token comment" spellcheck="true"># trainMatrix - 训练文档矩阵，即setOfWords2Vec返回的returnVec构成的矩阵,文档含有这个词1,文档不含这个词0</span>
+<span class="token comment" spellcheck="true"># trainCategory - 训练类别标签向量，即loadDataSet返回的classVe</span>
+<span class="token keyword">def</span> <span class="token function">trainNB0</span><span class="token punctuation">(</span>trainMatrix<span class="token punctuation">,</span> trainCategory<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    numTrainDocs <span class="token operator">=</span> len<span class="token punctuation">(</span>trainMatrix<span class="token punctuation">)</span>                          <span class="token comment" spellcheck="true"># 计算训练的文档数目</span>
+    numWords <span class="token operator">=</span> len<span class="token punctuation">(</span>trainMatrix<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>                           <span class="token comment" spellcheck="true"># 计算每篇文档的词条数</span>
+    pAbusive <span class="token operator">=</span> sum<span class="token punctuation">(</span>trainCategory<span class="token punctuation">)</span><span class="token operator">/</span>float<span class="token punctuation">(</span>numTrainDocs<span class="token punctuation">)</span>        <span class="token comment" spellcheck="true"># 文档属于侮辱类的概率</span>
+    <span class="token comment" spellcheck="true"># p0Num = np.zeros(numWords)</span>
+    <span class="token comment" spellcheck="true"># p1Num = np.zeros(numWords)   # 创建numpy.zeros数组,词条出现数初始化为0</span>
+    <span class="token comment" spellcheck="true"># p0Denom = 0.0</span>
+    <span class="token comment" spellcheck="true"># p1Denom = 0.0                # 分母初始化为0</span>
+    p0Num <span class="token operator">=</span> np<span class="token punctuation">.</span>ones<span class="token punctuation">(</span>numWords<span class="token punctuation">)</span><span class="token punctuation">;</span> p1Num <span class="token operator">=</span> np<span class="token punctuation">.</span>ones<span class="token punctuation">(</span>numWords<span class="token punctuation">)</span>      <span class="token comment" spellcheck="true"># change to np.ones() 防止有一项概率为0,乘积为0</span>
+    p0Denom <span class="token operator">=</span> <span class="token number">2.0</span><span class="token punctuation">;</span> p1Denom <span class="token operator">=</span> <span class="token number">2.0</span>                        <span class="token comment" spellcheck="true"># change to 2.0</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>numTrainDocs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> trainCategory<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>                <span class="token comment" spellcheck="true"># 统计属于侮辱类的条件概率所需的数据，即P(w0|1),P(w1|1),P(w2|1)···</span>
+            p1Num <span class="token operator">+=</span> trainMatrix<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+            p1Denom <span class="token operator">+=</span> sum<span class="token punctuation">(</span>trainMatrix<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>       <span class="token comment" spellcheck="true"># +当前文档所有的词</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>                                    <span class="token comment" spellcheck="true"># 统计属于非侮辱类的条件概率所需的数据，即P(w0|0),P(w1|0),P(w2|0)···</span>
+            p0Num <span class="token operator">+=</span> trainMatrix<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+            p0Denom <span class="token operator">+=</span> sum<span class="token punctuation">(</span>trainMatrix<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>       <span class="token comment" spellcheck="true"># +当前文档所有的词</span>
+    <span class="token comment" spellcheck="true"># p1Vect = p1Num/p1Denom      # P(cute|侮辱类)</span>
+    <span class="token comment" spellcheck="true"># p0Vect = p0Num/p0Denom      # P(cute|非侮辱类)</span>
+    p1Vect <span class="token operator">=</span> np<span class="token punctuation">.</span>log<span class="token punctuation">(</span>p1Num<span class="token operator">/</span>p1Denom<span class="token punctuation">)</span>          <span class="token comment" spellcheck="true"># change to np.log() 防止概率乘积过小,被python约为0</span>
+    p0Vect <span class="token operator">=</span> np<span class="token punctuation">.</span>log<span class="token punctuation">(</span>p0Num<span class="token operator">/</span>p0Denom<span class="token punctuation">)</span>          <span class="token comment" spellcheck="true"># change to np.log()</span>
+    <span class="token keyword">return</span> p0Vect<span class="token punctuation">,</span> p1Vect<span class="token punctuation">,</span> pAbusive              <span class="token comment" spellcheck="true"># 返回属于侮辱类的条件概率数组，属于非侮辱类的条件概率数组，文档属于侮辱类的概率</span>
+
+
+<span class="token keyword">def</span> <span class="token function">classifyNB</span><span class="token punctuation">(</span>vec2Classify<span class="token punctuation">,</span> p0Vec<span class="token punctuation">,</span> p1Vec<span class="token punctuation">,</span> pClass1<span class="token punctuation">)</span><span class="token punctuation">:</span>        <span class="token comment" spellcheck="true"># p(w|ci)*p(ci)</span>
+    p1 <span class="token operator">=</span> sum<span class="token punctuation">(</span>vec2Classify <span class="token operator">*</span> p1Vec<span class="token punctuation">)</span> <span class="token operator">+</span> np<span class="token punctuation">.</span>log<span class="token punctuation">(</span>pClass1<span class="token punctuation">)</span>        <span class="token comment" spellcheck="true"># sum也是乘积转化为log的和而来</span>
+    p0 <span class="token operator">=</span> sum<span class="token punctuation">(</span>vec2Classify <span class="token operator">*</span> p0Vec<span class="token punctuation">)</span> <span class="token operator">+</span> np<span class="token punctuation">.</span>log<span class="token punctuation">(</span><span class="token number">1.0</span> <span class="token operator">-</span> pClass1<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># log(a*b) = log(a) + log(b)</span>
+    <span class="token keyword">if</span> p1 <span class="token operator">></span> p0<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token number">1</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token number">0</span>
+
+
+<span class="token keyword">def</span> <span class="token function">bagOfWords2VecMN</span><span class="token punctuation">(</span>vocabList<span class="token punctuation">,</span> inputSet<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    returnVec <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">*</span>len<span class="token punctuation">(</span>vocabList<span class="token punctuation">)</span>
+    <span class="token keyword">for</span> word <span class="token keyword">in</span> inputSet<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> word <span class="token keyword">in</span> vocabList<span class="token punctuation">:</span>
+            returnVec<span class="token punctuation">[</span>vocabList<span class="token punctuation">.</span>index<span class="token punctuation">(</span>word<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">+=</span> <span class="token number">1</span>
+    <span class="token keyword">return</span> returnVec
+
+
+<span class="token keyword">def</span> <span class="token function">testingNB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    listOPosts<span class="token punctuation">,</span> listClasses <span class="token operator">=</span> loadDataSet<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    myVocabList <span class="token operator">=</span> createVocabList<span class="token punctuation">(</span>listOPosts<span class="token punctuation">)</span>
+    trainMat <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> postinDoc <span class="token keyword">in</span> listOPosts<span class="token punctuation">:</span>
+        trainMat<span class="token punctuation">.</span>append<span class="token punctuation">(</span>setOfWords2Vec<span class="token punctuation">(</span>myVocabList<span class="token punctuation">,</span> postinDoc<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    p0V<span class="token punctuation">,</span> p1V<span class="token punctuation">,</span> pAb <span class="token operator">=</span> trainNB0<span class="token punctuation">(</span>np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>trainMat<span class="token punctuation">)</span><span class="token punctuation">,</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>listClasses<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    testEntry <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'love'</span><span class="token punctuation">,</span> <span class="token string">'my'</span><span class="token punctuation">,</span> <span class="token string">'dalmation'</span><span class="token punctuation">]</span>
+    thisDoc <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>setOfWords2Vec<span class="token punctuation">(</span>myVocabList<span class="token punctuation">,</span> testEntry<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>testEntry<span class="token punctuation">,</span> <span class="token string">'classified as: '</span><span class="token punctuation">,</span> classifyNB<span class="token punctuation">(</span>thisDoc<span class="token punctuation">,</span> p0V<span class="token punctuation">,</span> p1V<span class="token punctuation">,</span> pAb<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    testEntry <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'stupid'</span><span class="token punctuation">,</span> <span class="token string">'garbage'</span><span class="token punctuation">]</span>
+    thisDoc <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>setOfWords2Vec<span class="token punctuation">(</span>myVocabList<span class="token punctuation">,</span> testEntry<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>testEntry<span class="token punctuation">,</span> <span class="token string">'classified as: '</span><span class="token punctuation">,</span> classifyNB<span class="token punctuation">(</span>thisDoc<span class="token punctuation">,</span> p0V<span class="token punctuation">,</span> p1V<span class="token punctuation">,</span> pAb<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+
+testingNB<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h1 id="四、sklearn中的朴素贝叶斯算法"><a href="#四、sklearn中的朴素贝叶斯算法" class="headerlink" title="四、sklearn中的朴素贝叶斯算法"></a>四、sklearn中的朴素贝叶斯算法</h1><p>在sklearn中，朴素贝叶斯有三种方法，分别是<strong>GaussianNB（先验为高斯分布即正态分布）</strong>，<strong>MultinomialNB（先验为多项式分布）</strong> 和 <strong>BernoulliNB（先验为伯努利分布）</strong>。</p>
+<h2 id="1-高斯朴素贝叶斯（最常用）"><a href="#1-高斯朴素贝叶斯（最常用）" class="headerlink" title="1. 高斯朴素贝叶斯（最常用）"></a>1. 高斯朴素贝叶斯（最常用）</h2><p><strong>分类效果在二分数据和月亮型数据上表现优秀，但是环形数据不太擅长（但远远胜过其他线性模型）</strong></p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>datasets <span class="token keyword">import</span> make_blobs     <span class="token comment" spellcheck="true"># 导入数据集</span>
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>model_selection <span class="token keyword">import</span> train_test_split
+
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>naive_bayes <span class="token keyword">import</span> GaussianNB
+
+x<span class="token punctuation">,</span> y <span class="token operator">=</span> make_blobs<span class="token punctuation">(</span>n_samples<span class="token operator">=</span><span class="token number">500</span><span class="token punctuation">,</span> centers<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">,</span> random_state<span class="token operator">=</span><span class="token number">8</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 这里构建了一个500个样本，5类的数据</span>
+x_train<span class="token punctuation">,</span> x_test<span class="token punctuation">,</span> y_train<span class="token punctuation">,</span> y_test <span class="token operator">=</span> train_test_split<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> random_state<span class="token operator">=</span><span class="token number">8</span><span class="token punctuation">)</span>
+
+gnb <span class="token operator">=</span> GaussianNB<span class="token punctuation">(</span><span class="token punctuation">)</span>
+gnb<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>x_train<span class="token punctuation">,</span> y_train<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>gnb<span class="token punctuation">.</span>score<span class="token punctuation">(</span>x_test<span class="token punctuation">,</span> y_test<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="2-伯努利朴素贝叶斯"><a href="#2-伯努利朴素贝叶斯" class="headerlink" title="2. 伯努利朴素贝叶斯"></a>2. 伯努利朴素贝叶斯</h2><p><strong>二项分布，适合0—1变量的分类任务</strong></p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>naive_bayes <span class="token keyword">import</span> BernoulliNB
+
+bnb <span class="token operator">=</span> BernoulliNB<span class="token punctuation">(</span><span class="token punctuation">)</span>
+bnb<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>x_train<span class="token punctuation">,</span> y_train<span class="token punctuation">)</span>
+bnb<span class="token punctuation">.</span>score<span class="token punctuation">(</span>x_test<span class="token punctuation">,</span> y_test<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="3-多项式分布朴素贝叶斯"><a href="#3-多项式分布朴素贝叶斯" class="headerlink" title="3. 多项式分布朴素贝叶斯"></a>3. 多项式分布朴素贝叶斯</h2><p><strong>多项式分布擅长的是分类型变量（离散），不接受负值的输入</strong></p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>naive_bayes <span class="token keyword">import</span> MultinomialNB
+
+mnb<span class="token operator">=</span>MultinomialNB<span class="token punctuation">(</span><span class="token punctuation">)</span>
+mnb<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>x_train<span class="token punctuation">,</span>y_train<span class="token punctuation">)</span>
+mnb<span class="token punctuation">.</span>score<span class="token punctuation">(</span>x_test<span class="token punctuation">,</span>y_test<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><p> <strong>1. 优点</strong></p>
+<ul>
+<li>通过计算概率来进行分类，可以处理多分类问题</li>
+<li>对缺失数据不太敏感，算法也比较简单，常用于文本分类。</li>
+</ul>
+<p><strong>2. 缺点</strong></p>
+<ul>
+<li>朴素贝叶斯模型假设属性之间相互独立，这个假设在实际应用中往往是不成立的，在属性个数比较多或者属性之间相关性较大时，分类效果不好</li>
+<li>需要知道先验概率，且先验概率很多时候取决于假设，假设的模型可以有很多种，因此在某些时候会由于假设的先验模型的原因导致预测效果不佳，分类决策存在一定的错误率。</li>
+<li>对输入数据的表达形式很敏感（布尔型）</li>
+<li>sklearn中贝叶斯没有太多的参数可以调整，因此贝叶斯算法的成长空间并不是太大。如果贝叶斯算法的效果不是太理想，一般都会考虑换模型。</li>
+</ul>
+<hr>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><ol>
+<li><p>sklearn中，有三种不同的朴素贝叶斯模型。朴素贝叶斯将问题转化成如何基于训练数据D来估计先验概率P(A)和似然P(B|A)。P(A)由大数定律，是不是可以由训练集的某分类除以训练集总数得到？</p>
+<p> 那么P(A)的算法统一了，问题转化成了如何求似然估计P(B|A)，资料说根据对“似然度 P(Bi|A)”计算方法的不同，我们将朴素贝叶斯大致分为三种：多项式朴素贝叶斯、伯努利分布朴素贝叶斯、高斯分布朴素贝叶斯。例如高斯朴素贝叶斯就是用正态分布模型来估算P(B|A)。如何理解这里的计算方法不同呢？</p>
+<p> 是否这样理解：真实的数据集，并不像我们的例子，例如“碗中取糖果等”有着固定的分布规律，这三个算法是否就是在假设数据集符合某种分布，例如用伯努利朴素贝叶斯，就是在假设训练集的每个属性都满足二项分布？然后去计算条件概率？</p>
+<p> <img src="https://img-blog.csdnimg.cn/2478822323e8434ebdda5bbf2cb8cefd.png"></p>
+</li>
+</ol>
+<hr>
+<p><strong>Reference:</strong><br><a target="_blank" rel="noopener" href="https://cuijiahua.com/blog/2017/11/ml_4_bayes_1.html">机器学习实战教程（四）：朴素贝叶斯基础篇之言论过滤器</a></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Messi</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://Yunchang-Liu.github.io/2022/10/16/ML-NaiveBayes/">https://Yunchang-Liu.github.io/2022/10/16/ML-NaiveBayes/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint polocy. If reproduced, please indicate source
+                    <a href="/about" target="_blank">Messi</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                    <span class="chip bg-color">机器学习</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
+            <div class="card">
+                <a href="/2022/10/16/ML-NaiveBayes/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="机器学习之朴素贝叶斯">
+                        
+                        <span class="card-title">机器学习之朴素贝叶斯</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Naive Bayes
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-16
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    机器学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">机器学习</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/10/14/ML-DecisionTree/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="机器学习之决策树">
+                        
+                        <span class="card-title">机器学习之决策树</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Decision Tree
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-14
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    机器学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">机器学习</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2022</span>
+            
+            <span id="year">2022</span>
+            <a href="/about" target="_blank">Messi</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">8.8k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2022";
+                    var startMonth = "10";
+                    var startDate = "10";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Yunchang-Liu" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1422857525@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+    <a href="https://blog.csdn.net/m0_46684880" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN" data-position="top" data-delay="50">
+        <i class="fab fa-csdn">C</i>
+    </a>
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</body>
+
+</html>
