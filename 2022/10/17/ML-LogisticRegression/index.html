@@ -4,7 +4,7 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="Categories, Yunchang">
+    <meta name="keywords" content="机器学习之逻辑回归, Yunchang">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Categories | Yunchang</title>
+    <title>机器学习之逻辑回归 | Yunchang</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -200,153 +200,381 @@
 
 </header>
 
-    <div class="bg-cover pd-header about-cover">
-    <div class="container">
-    <div class="row">
-    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
-        <div class="brand">
-            <div class="title center-align">
-                
-                Welcome！
-                
-            </div>
+    
 
-            <div class="description center-align">
-                
-                <span id="subtitle"></span>
-                <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
-                <script>
-                    var typed = new Typed("#subtitle", {
-                        strings: ['你必须很努力，才能看起来毫不费力','It takes effort to look effortless'],
-                        startDelay: 300,
-                        typeSpeed: 100,
-                        loop: true,
-                        backSpeed: 50,
-                        showCursor: true
-                    });
-                </script>
-                
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">机器学习之逻辑回归</h1>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 
-<script>
-    $('.bg-cover').css('background-image', 'url(/medias/banner/0.jpg)');
-</script>
 
 
-    </div>
-</div>
-
-<main class="content">
+<main class="container content">
 
     
-
-<div id="category-cloud" class="container chip-container">
+    <!-- 文章内容详情 -->
+<div id="artDetail">
     <div class="card">
-        <div class="card-content">
-            <div class="tag-title center-align">
-                <i class="fas fa-bookmark"></i>&nbsp;&nbsp;Post Categories
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                <span class="chip bg-color">机器学习</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                机器学习
+                            </a>
+                        
+                    </div>
+                    
+                </div>
             </div>
-            <div class="tag-chips">
+
+            <div class="post-info">
                 
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2022-10-17
+                </div>
                 
+
                 
-                <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" title="机器学习: 4">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F9EBEA;">机器学习
-                        <span class="tag-length">4</span>
-                    </span>
-                </a>
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
+                    2022-10-17
+                </div>
                 
+
                 
-                <a href="/categories/hexo/" title="hexo: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F5EEF8;">hexo
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+                    435
+                </div>
                 
+
                 
-                <a href="/categories/flask/" title="flask: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #D5F5E3;">flask
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
+                    1 Min
+                </div>
                 
+
                 
             </div>
         </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="一、逻辑回归基本介绍"><a href="#一、逻辑回归基本介绍" class="headerlink" title="一、逻辑回归基本介绍"></a>一、逻辑回归基本介绍</h1><p><strong>Logistic Regression</strong></p>
+<ol>
+<li>用于分类问题</li>
+<li>监督学习算法</li>
+</ol>
+<hr>
+<h1 id="二、逻辑回归工作原理"><a href="#二、逻辑回归工作原理" class="headerlink" title="二、逻辑回归工作原理"></a>二、逻辑回归工作原理</h1><p><strong>根据现有数据对分类边界线建立回归公式</strong> ，具体分为以下三步</p>
+<h2 id="1-将决策边界表示为"><a href="#1-将决策边界表示为" class="headerlink" title="1. 将决策边界表示为"></a>1. 将决策边界表示为</h2><blockquote>
+<p>z &#x3D; W<del>1</del>X<del>1</del>+W<del>2</del>X<del>2</del>+···+W<del>n</del>X<del>n</del> + b   (W<del>0</del>X<del>0</del>)</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/f935bd5955c14896b5b80e684ae7b325.jpeg" alt="决策边界"><br>向量x是分类器的输入数据，向量θ是我们要找到的最佳参数。</p>
+<h2 id="2-把决策边界函数经过Sigmoid函数运算得到概率："><a href="#2-把决策边界函数经过Sigmoid函数运算得到概率：" class="headerlink" title="2. 把决策边界函数经过Sigmoid函数运算得到概率："></a>2. 把决策边界函数经过<strong>Sigmoid函数</strong>运算得到概率：</h2><ul>
+<li>概率大于0.5分类为1</li>
+<li>概率小于0.5分类为0</li>
+</ul>
+<h2 id="3-使损失函数最小化来获得最佳的参数向量θ"><a href="#3-使损失函数最小化来获得最佳的参数向量θ" class="headerlink" title="3.使损失函数最小化来获得最佳的参数向量θ"></a>3.使损失函数最小化来获得最佳的参数向量θ</h2><p>如果分类为1，则概率越小表示分类错误程度越高；如果分类为0，则概率越大表示分类错误程度越高。经过推导，最后用梯度下降法计算损失函数最小值。</p>
+<p><img src="https://img-blog.csdnimg.cn/93698cd400b14b989636f501af30addc.jpeg" alt="在这里插入图片描述"></p>
+<hr>
+<h1 id="三、手写kNN算法核心"><a href="#三、手写kNN算法核心" class="headerlink" title="三、手写kNN算法核心"></a>三、手写kNN算法核心</h1><pre class="line-numbers language-python"><code class="language-python"><span class="token triple-quoted-string string">"""
+    1.计算已知类别数据集中的点与当前点之间的距离
+    2.按照距离递增依次排序
+    3.选取与当前点距离最小的k个点
+    4.确定前k个点所在类别的出现频率
+    5.返回前k个点出现频率最高的类别作为当前点的预测分类
+"""</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h1 id="四、sklearn实现KNN算法"><a href="#四、sklearn实现KNN算法" class="headerlink" title="四、sklearn实现KNN算法"></a>四、sklearn实现KNN算法</h1><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>neighbors <span class="token keyword">import</span> KNeighborsClassifier
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="KNeighborsClassifier-构造函数的参数及默认值"><a href="#KNeighborsClassifier-构造函数的参数及默认值" class="headerlink" title="KNeighborsClassifier() 构造函数的参数及默认值"></a>KNeighborsClassifier() 构造函数的参数及默认值</h2><pre class="line-numbers language-python"><code class="language-python">clf <span class="token operator">=</span> KNeighborsClassifier<span class="token punctuation">(</span>n_neighbors<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">,</span>weights<span class="token operator">=</span>’uniform’<span class="token punctuation">,</span> algorithm<span class="token operator">=</span>’auto’<span class="token punctuation">,</span> leaf_size<span class="token operator">=</span><span class="token number">30</span><span class="token punctuation">,</span> p<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> 
+metric<span class="token operator">=</span>’minkowski’<span class="token punctuation">,</span>metric_params<span class="token operator">=</span>None<span class="token punctuation">,</span> n_jobs<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ol>
+<li><code>n_neighbors</code>：默认为5，就是k-NN的k的值，选取最近的k个点。</li>
+<li><code>weights</code>：默认是uniform，还可以是distance以考虑距离，可以解决“平票”问题</li>
+</ol>
+<hr>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><p> <strong>1. 优点</strong></p>
+<ul>
+<li>训练速度较快，可解释性高</li>
+</ul>
+<p><strong>2. 缺点</strong></p>
+<ul>
+<li>容易欠拟合，精度不高</li>
+</ul>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>1. </p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Messi</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://Yunchang-Liu.github.io/2022/10/17/ML-LogisticRegression/">https://Yunchang-Liu.github.io/2022/10/17/ML-LogisticRegression/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint polocy. If reproduced, please indicate source
+                    <a href="/about" target="_blank">Messi</a>
+                    !
+                </span>
+            </div>
+        
     </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                    <span class="chip bg-color">机器学习</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
+            <div class="card">
+                <a href="/2022/10/17/ML-LogisticRegression/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="机器学习之逻辑回归">
+                        
+                        <span class="card-title">机器学习之逻辑回归</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Logistic Regression
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-17
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    机器学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">机器学习</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/10/16/ML-NaiveBayes/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="机器学习之朴素贝叶斯">
+                        
+                        <span class="card-title">机器学习之朴素贝叶斯</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Naive Bayes
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-16
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    机器学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">机器学习</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
 </div>
 
 
-    
-    <style type="text/css">
-    #category-radar {
-        width: 100%;
-        height: 360px;
-    }
-</style>
 
-<div class="container" data-aos="fade-up">
-    <div class="card">
-        <div id="category-radar" class="card-content"></div>
-    </div>
-</div>
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
-<script type="text/javascript" src="/libs/echarts/echarts.min.js"></script>
-<script type="text/javascript">
-    let radarChart = echarts.init(document.getElementById('category-radar'));
+<!-- 代码语言 -->
 
-    
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
 
-    let option = {
-        title: {
-            left: 'center',
-            text: 'Post Categories Radar Chart',
-            textStyle: {
-                fontWeight: 500,
-                fontSize: 22
-            }
-        },
-        tooltip: {},
-        radar: {
-            name: {
-                textStyle: {
-                    color: '#3C4858'
-                }
-            },
-            indicator: [{"name":"机器学习","max":5},{"name":"hexo","max":5},{"name":"flask","max":5}],
-            nameGap: 5,
-            center: ['50%','55%'],
-            radius: '66%'
-        },
-        series: [{
-            type: 'radar',
-            color: ['#3ecf8e'],
-            itemStyle: {normal: {areaStyle: {type: 'default'}}},
-            data : [
-                {
-                    value : [4,1,1],
-                    name : 'Number of Categories'
-                }
-            ]
-        }]
-    };
 
-    radarChart.setOption(option);
-</script>
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
 
     
 
 </main>
+
+
 
 
     <footer class="page-footer bg-color">
