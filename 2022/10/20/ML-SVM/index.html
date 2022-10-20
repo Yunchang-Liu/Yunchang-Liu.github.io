@@ -4,7 +4,7 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="机器学习之决策树, Yunchang">
+    <meta name="keywords" content="机器学习之SVM, Yunchang">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>机器学习之决策树 | Yunchang</title>
+    <title>机器学习之SVM | Yunchang</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -204,12 +204,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">机器学习之决策树</h1>
+                    <h1 class="description center-align post-title">机器学习之SVM</h1>
                 </div>
             </div>
         </div>
@@ -256,28 +256,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-10-14
+                    2022-10-20
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2022-10-17
+                    2022-10-20
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    2.2k
+                    1.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    8 Min
+                    6 Min
                 </div>
                 
 
@@ -292,101 +292,88 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="一、决策树基本介绍"><a href="#一、决策树基本介绍" class="headerlink" title="一、决策树基本介绍"></a>一、决策树基本介绍</h1><p><strong>Decision Tree</strong></p>
+                <h1 id="一、SVM基本介绍"><a href="#一、SVM基本介绍" class="headerlink" title="一、SVM基本介绍"></a>一、SVM基本介绍</h1><p><strong>Support Vector Machine</strong>支持向量机</p>
 <ol>
-<li>可以解决分类和回归问题</li>
+<li>用于分类问题，也可以用于回归问题</li>
 <li>监督学习算法</li>
 </ol>
 <hr>
-<h1 id="二、决策树工作原理"><a href="#二、决策树工作原理" class="headerlink" title="二、决策树工作原理"></a>二、决策树工作原理</h1><p>从根开始，按照决策树的分类属性，从上往下，逐层划分。直到叶子节点，便能获得结果。所以决策树算法的核心在于<strong>如何构造一颗决策树？</strong></p>
-<p>最常见核心的决策树算法有三个——<strong>ID3、C4.5、CART</strong></p>
-<h2 id="1-ID3"><a href="#1-ID3" class="headerlink" title="1. ID3"></a>1. ID3</h2><h3 id="核心思想：以信息增益来度量特征选择，选择信息增益最大的特征进行分裂"><a href="#核心思想：以信息增益来度量特征选择，选择信息增益最大的特征进行分裂" class="headerlink" title="核心思想：以信息增益来度量特征选择，选择信息增益最大的特征进行分裂"></a>核心思想：以信息增益来度量特征选择，选择信息增益最大的特征进行分裂</h3><p><img src="https://img-blog.csdnimg.cn/006e6e74161347068ad633e2a0130ede.png" alt="ID3算法的具体步骤"><br>条件熵H(D|A)：已知A条件下的熵。A是训练集中除标签外的一个属性，即根据A属性的不同取值将原训练集D划分成若干子集(D1，D2，D3…)。条件熵是<strong>各子集所占比重×子集的信息熵 的加和</strong>得出。</p>
-<p><strong>条件给的越好，划分出子集的信息熵就越小</strong>(因为每个子集基本都是同一分类)，<strong>条件熵就越小，信息增益就越大。所以信息增益最大的属性即当前最好的属性。</strong></p>
-<h3 id="计算示例"><a href="#计算示例" class="headerlink" title="计算示例"></a>计算示例</h3><p><img src="https://img-blog.csdnimg.cn/854108304a1f46e98f6a61c1b4396ed3.jpeg" alt="计算信息增益"></p>
-<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
-<li>ID3 没有剪枝策略，容易过拟合</li>
-<li>信息增益准则对可取值数目较多的特征有所偏好，类似“编号”的特征其信息增益接近于 1；</li>
-<li>只能用于处理离散分布的特征</li>
-<li>没有考虑缺失值。</li>
-</ul>
-<h2 id="2-C4-5"><a href="#2-C4-5" class="headerlink" title="2. C4.5"></a>2. C4.5</h2><h3 id="改进"><a href="#改进" class="headerlink" title="改进"></a>改进</h3><ul>
-<li>引入悲观剪枝策略进行后剪枝（用递归的方式从底往上针对每一个非叶子节点，评估用一个最佳叶子节点去代替这课子树是否有益。如果剪枝后与剪枝前相比其错误率是保持或者下降，则这棵子树就可以被替换掉）</li>
-<li>引入信息增益率作为划分标准</li>
-<li>将连续特征离散化，假设 n 个样本的连续特征 A 有 m 个取值，C4.5 将其排序并取相邻两样本值的平均数共 m-1 个划分点，分别计算以该划分点作为二元分类点时的信息增益，并选择信息增益最大的点作为该连续特征的二元离散分类点</li>
-<li>对于缺失值的处理可以分为两个子问题： 1. 在特征值缺失的情况下进行划分特征的选择？ （即如何计算特征的信息增益率）2. 选定该划分特征，对于缺失该特征值的样本如何处理？ （即到底把这个样本划分到哪个结点里）<ul>
-<li>针对问题一，C4.5 的做法是： 对于具有缺失值特征，用没有缺失的样本子集所占比重来折算；</li>
-<li>针对问题二，C4.5 的做法是： 将样本同时划分到所有子节点，不过要调整样本的权重值，其实也就是以不同概率划分到不同节点中。<br><img src="https://img-blog.csdnimg.cn/8e72eacc49254702bf262caa121ea084.jpeg" alt="信息增益率"></li>
-</ul>
-</li>
-</ul>
-<h3 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h3><ul>
-<li>剪枝策略可以再优化；</li>
-<li>C4.5 用的是多叉树，用二叉树效率更高；</li>
-<li>C4.5 只能用于分类；</li>
-<li>C4.5 使用的熵模型拥有大量耗时的对数运算，连续值还有排序运算；</li>
-<li>C4.5 在构造树的过程中，对数值属性值需要按照其大小进行排序，从中选择一个分割点，所以只适合于能够驻留于内存的数据集，当训练集大得无法在内存容纳时，程序无法运行。</li>
-</ul>
-<h2 id="3-CART"><a href="#3-CART" class="headerlink" title="3. CART"></a>3. CART</h2><h3 id="分类标准是基尼系数，其他内容待进一步学习"><a href="#分类标准是基尼系数，其他内容待进一步学习" class="headerlink" title="分类标准是基尼系数，其他内容待进一步学习"></a>分类标准是基尼系数，其他内容待进一步学习</h3><p><img src="https://img-blog.csdnimg.cn/9ade00a3589d4cbd917db54ad0d0cd01.jpeg" alt="基尼系数"></p>
-<h2 id="剪枝"><a href="#剪枝" class="headerlink" title="剪枝"></a>剪枝</h2><p><img src="https://img-blog.csdnimg.cn/04b6ee95bb064847ba158056507c9b8a.jpeg" alt="训练集(上)与验证集(下)"></p>
-<p><img src="https://img-blog.csdnimg.cn/23ddb198dd814b14b2c0f1f3725083a1.jpeg" alt="ID3算法生成的未剪枝的决策树"></p>
-<h3 id="1-预剪枝"><a href="#1-预剪枝" class="headerlink" title="1. 预剪枝"></a>1. 预剪枝</h3><p><img src="https://img-blog.csdnimg.cn/231d1b7fcbfb4056b48e9ad2315f63cf.jpeg" alt="预剪枝决策树"><br>预剪枝使得决策树的很多分支都没有“展开”，不仅降低了过拟合的风险，还显著减少了决策树的训练时间开销和测试时间开销。但<strong>可能导致欠拟合</strong>。</p>
-<h3 id="2-后剪枝"><a href="#2-后剪枝" class="headerlink" title="2. 后剪枝"></a>2. 后剪枝</h3><p><img src="https://img-blog.csdnimg.cn/f8bbd0258eba4c6aab92178153c1035b.jpeg" alt="后剪枝决策树"><br>后剪枝通常比预剪枝决策树保留了更多的分支，欠拟合风险很小，泛化性能优于预剪枝。但要自底向上对非叶节点进行逐一考察，因此<strong>训练时间开销比未剪枝决策树和预剪枝决策树都要大得多</strong>。</p>
+<h1 id="二、SVM工作原理"><a href="#二、SVM工作原理" class="headerlink" title="二、SVM工作原理"></a>二、SVM工作原理</h1><p><strong>最大化margin，几何间隔越大，分类的把握性越大，即错误率越低</strong></p>
+<h2 id="1-线性支持向量机（数据可分）"><a href="#1-线性支持向量机（数据可分）" class="headerlink" title="1. 线性支持向量机（数据可分）"></a>1. 线性支持向量机（数据可分）</h2><p>注意分类类别划分为了 <strong>-1和1</strong>，而不是0和1，是为了后续（图1最下行）将两式子化为一个式子。y取-1，数据点代入也小于0，相乘还是大于1。<br><img src="https://img-blog.csdnimg.cn/01d87c44cf08400692336ca25d12cbb5.jpeg"><br><img src="https://img-blog.csdnimg.cn/55d45ad286fd43e4a1ac8807d9dc723f.jpeg"></p>
+<h2 id="2-软边距支持向量机（数据不可分）"><a href="#2-软边距支持向量机（数据不可分）" class="headerlink" title="2. 软边距支持向量机（数据不可分）"></a>2. 软边距支持向量机（数据不可分）</h2><p><img src="https://img-blog.csdnimg.cn/b760da1e7de04ca4a3b00bbb31e7ea5e.jpeg"></p>
 <hr>
-<h1 id="三、手写决策树算法核心"><a href="#三、手写决策树算法核心" class="headerlink" title="三、手写决策树算法核心"></a>三、手写决策树算法核心</h1><pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 构造决策树</span>
-<span class="token keyword">def</span> <span class="token function">createTree</span><span class="token punctuation">(</span>dataSet<span class="token punctuation">,</span> labels<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    classList <span class="token operator">=</span> <span class="token punctuation">[</span>example<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token keyword">for</span> example <span class="token keyword">in</span> dataSet<span class="token punctuation">]</span>        <span class="token comment" spellcheck="true"># 所有分类的数组</span>
-    <span class="token keyword">if</span> classList<span class="token punctuation">.</span>count<span class="token punctuation">(</span>classList<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">==</span> len<span class="token punctuation">(</span>classList<span class="token punctuation">)</span><span class="token punctuation">:</span>     <span class="token comment" spellcheck="true"># 所有标签都属于一个分类</span>
-        <span class="token keyword">return</span> classList<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
-    <span class="token keyword">if</span> len<span class="token punctuation">(</span>dataSet<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>        <span class="token comment" spellcheck="true"># 使用完了所有特征,仍不能将数据集划分成仅包含唯一类别的分组</span>
-        <span class="token keyword">return</span> majorityCnt<span class="token punctuation">(</span>classList<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 若所有属性都被考虑，仍无法划分标签，采用多数表决决定该叶子结点的分类</span>
-    bestFeat <span class="token operator">=</span> chooseBestFeatureToSplit<span class="token punctuation">(</span>dataSet<span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># 选取信息增益最大的特征作为下一次分类的依据</span>
-    bestFeatLabel <span class="token operator">=</span> labels<span class="token punctuation">[</span>bestFeat<span class="token punctuation">]</span>                <span class="token comment" spellcheck="true"># 选取特征对应的标签</span>
-    myTree <span class="token operator">=</span> <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;bestFeatLabel:&amp;#123;&amp;#125;&amp;#125;     # 创建tree字典,紧跟现阶段最优特征,下一个特征位于第二个大括号内,循环递归</span>
-    <span class="token keyword">del</span><span class="token punctuation">(</span>labels<span class="token punctuation">[</span>bestFeat<span class="token punctuation">]</span><span class="token punctuation">)</span>      <span class="token comment" spellcheck="true"># 使用过的特征从中删除</span>
-    featValues <span class="token operator">=</span> <span class="token punctuation">[</span>example<span class="token punctuation">[</span>bestFeat<span class="token punctuation">]</span> <span class="token keyword">for</span> example <span class="token keyword">in</span> dataSet<span class="token punctuation">]</span>
-    uniqueValues <span class="token operator">=</span> set<span class="token punctuation">(</span>featValues<span class="token punctuation">)</span>
-    <span class="token keyword">for</span> value <span class="token keyword">in</span> uniqueValues<span class="token punctuation">:</span>
-        subLabels <span class="token operator">=</span> labels<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span>   <span class="token comment" spellcheck="true"># 复制labels列表,避免每次调用createTree()函数将原始列表改变,因为有的调用在前有的调用在后</span>
-        myTree<span class="token punctuation">[</span>bestFeatLabel<span class="token punctuation">]</span><span class="token punctuation">[</span>value<span class="token punctuation">]</span> <span class="token operator">=</span> createTree<span class="token punctuation">(</span>splitDataSet<span class="token punctuation">(</span>dataSet<span class="token punctuation">,</span> bestFeat<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">,</span> subLabels<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 循环递归生成树</span>
-    <span class="token keyword">return</span> myTree
+<h1 id="三、sklearn实现SVM"><a href="#三、sklearn实现SVM" class="headerlink" title="三、sklearn实现SVM"></a>三、sklearn实现SVM</h1><h2 id="注：SVM涉及距离，需要先数据标准化处理"><a href="#注：SVM涉及距离，需要先数据标准化处理" class="headerlink" title="注：SVM涉及距离，需要先数据标准化处理"></a>注：SVM涉及距离，需要先数据标准化处理</h2><p><img src="https://img-blog.csdnimg.cn/c63d115b8fe443438995cdf4d039a879.png" alt="标准化处理前"></p>
+<center>上图为纵轴范围0-10000，下图将纵轴范围标准化到0-1</center>
+<center> <b>若不标准化处理，会严重影响求出的决策边界</b> </center>
 
 
-<span class="token comment" spellcheck="true"># 使用决策树的分类函数</span>
-<span class="token keyword">def</span> <span class="token function">classify</span><span class="token punctuation">(</span>inputTree<span class="token punctuation">,</span>featLabels<span class="token punctuation">,</span>testVec<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    firstStr <span class="token operator">=</span> list<span class="token punctuation">(</span>inputTree<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>          <span class="token comment" spellcheck="true"># 第一个按照其分类的属性</span>
-    secondDict <span class="token operator">=</span> inputTree<span class="token punctuation">[</span>firstStr<span class="token punctuation">]</span>        <span class="token comment" spellcheck="true"># 第一个属性下的节点字典,也就是子树</span>
-    featIndex <span class="token operator">=</span> featLabels<span class="token punctuation">.</span>index<span class="token punctuation">(</span>firstStr<span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># 将标签换为索引</span>
-    key <span class="token operator">=</span> testVec<span class="token punctuation">[</span>featIndex<span class="token punctuation">]</span>
-    valueOfFeat <span class="token operator">=</span> secondDict<span class="token punctuation">[</span>key<span class="token punctuation">]</span>
-    <span class="token keyword">if</span> isinstance<span class="token punctuation">(</span>valueOfFeat<span class="token punctuation">,</span> dict<span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment" spellcheck="true"># 如果还是个字典,说明没到叶子结点,继续递归</span>
-        classLabel <span class="token operator">=</span> classify<span class="token punctuation">(</span>valueOfFeat<span class="token punctuation">,</span> featLabels<span class="token punctuation">,</span> testVec<span class="token punctuation">)</span>
-    <span class="token keyword">else</span><span class="token punctuation">:</span>  <span class="token comment" spellcheck="true"># 如果到达叶子结点,直接返回分类标签</span>
-        classLabel <span class="token operator">=</span> valueOfFeat
-    <span class="token keyword">return</span> classLabel
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<hr>
-<h1 id="四、sklearn实现决策树算法"><a href="#四、sklearn实现决策树算法" class="headerlink" title="四、sklearn实现决策树算法"></a>四、sklearn实现决策树算法</h1><h2 id="1-分类问题"><a href="#1-分类问题" class="headerlink" title="1. 分类问题"></a>1. 分类问题</h2><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+<p><img src="https://img-blog.csdnimg.cn/78eec4d075eb4be2879cc09edd725b5c.png" alt="标准化处理后"></p>
+<h2 id="1-线性SVM"><a href="#1-线性SVM" class="headerlink" title="1. 线性SVM"></a>1. 线性SVM</h2><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
 <span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
 <span class="token keyword">from</span> sklearn <span class="token keyword">import</span> datasets
-<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>tree <span class="token keyword">import</span> DecisionTreeClassifier
 
-iris <span class="token operator">=</span> datasets<span class="token punctuation">.</span>load_iris<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 加载鸢尾花数据集</span>
-X <span class="token operator">=</span> iris<span class="token punctuation">.</span>data<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">]</span>         <span class="token comment" spellcheck="true"># 只取后两个维度特征</span>
+iris <span class="token operator">=</span> datasets<span class="token punctuation">.</span>load_iris<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+X <span class="token operator">=</span> iris<span class="token punctuation">.</span>data
 y <span class="token operator">=</span> iris<span class="token punctuation">.</span>target
 
-dt_clf <span class="token operator">=</span> DecisionTreeClassifier<span class="token punctuation">(</span>max_depth<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> criterion<span class="token operator">=</span><span class="token string">"entropy"</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 最大深度2,使用信息熵作为划分标准</span>
-dt_clf<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
+X <span class="token operator">=</span> X<span class="token punctuation">[</span>y <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">]</span>  <span class="token comment" spellcheck="true"># 只取前两个特征</span>
+y <span class="token operator">=</span> y<span class="token punctuation">[</span>y <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">]</span>      <span class="token comment" spellcheck="true"># 只取y=0 y=1,二分类问题</span>
 
-<span class="token triple-quoted-string string">"""
-    sklearn的决策树实现: CART算法
-    DecisionTreeClassifier部分参数(默认值)
-    
-    criterion='gini': 划分标准.默认gini,也可以改成entropy等
-    max_depth=2: 限制整棵树的最大深度.越大越容易过拟合
-    max_leaf_nodes=None: 最多有几个叶子结点.越大越容易归你和
-    min_samples_leaf=1: 对于一个叶子结点,最少应该有几个样本.越小越容易过拟合
-    min_samples_split=2: 对于一个节点,至少有多少个样本数据,才继续拆分.越小越容易过拟合
-"""</span>
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>preprocessing <span class="token keyword">import</span> StandardScaler
+
+standardScaler <span class="token operator">=</span> StandardScaler<span class="token punctuation">(</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># 要先数据归一化</span>
+standardScaler<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X<span class="token punctuation">)</span>
+X_standard <span class="token operator">=</span> standardScaler<span class="token punctuation">.</span>transform<span class="token punctuation">(</span>X<span class="token punctuation">)</span>
+
+
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>svm <span class="token keyword">import</span> LinearSVC
+
+svc <span class="token operator">=</span> LinearSVC<span class="token punctuation">(</span>C<span class="token operator">=</span><span class="token number">1e9</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># C即正则化参数</span>
+svc<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X_standard<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 绘制决策边界略</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="LinearSVC-构造函数的参数及默认值"><a href="#LinearSVC-构造函数的参数及默认值" class="headerlink" title="LinearSVC() 构造函数的参数及默认值"></a>LinearSVC() 构造函数的参数及默认值</h3><pre class="line-numbers language-python"><code class="language-python">LinearSVC<span class="token punctuation">(</span>C<span class="token operator">=</span><span class="token number">1.0</span><span class="token punctuation">,</span> class_weight<span class="token operator">=</span>None<span class="token punctuation">,</span> dual<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> fit_intercept<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
+          intercept_scaling<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> loss<span class="token operator">=</span><span class="token string">'squared_hinge'</span><span class="token punctuation">,</span> max_iter<span class="token operator">=</span><span class="token number">1000</span><span class="token punctuation">,</span>
+          multi_class<span class="token operator">=</span><span class="token string">'ovr'</span><span class="token punctuation">,</span> penalty<span class="token operator">=</span><span class="token string">'l2'</span><span class="token punctuation">,</span> random_state<span class="token operator">=</span>None<span class="token punctuation">,</span> tol<span class="token operator">=</span><span class="token number">0.0001</span><span class="token punctuation">,</span>
+          verbose<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<ol>
+<li><code>penalty</code>：默认为’l2’，默认正则化方式为l2正则化，还有l1正则化。</li>
+<li><code>C</code>：默认是1.0，正则化参数</li>
+</ol>
+<h2 id="2-非线性SVM"><a href="#2-非线性SVM" class="headerlink" title="2. 非线性SVM"></a>2. 非线性SVM</h2><h3 id="（1）线性SVM中使用多项式特征"><a href="#（1）线性SVM中使用多项式特征" class="headerlink" title="（1）线性SVM中使用多项式特征"></a>（1）线性SVM中使用多项式特征</h3><table>
+    <tr>
+        <td ><center><img src="https://img-blog.csdnimg.cn/0765088d14c14723960f3b5bcbdc0021.png" >原moons数据集</center></td>
+        <td ><center><img src="https://img-blog.csdnimg.cn/2daef5b89bff422bb667a754a74e72fd.png" >添加噪音的moons数据集</center></td>
+    </tr>
+</table>
+
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+
+<span class="token keyword">from</span> sklearn <span class="token keyword">import</span> datasets
+
+X<span class="token punctuation">,</span> y <span class="token operator">=</span> datasets<span class="token punctuation">.</span>make_moons<span class="token punctuation">(</span>noise<span class="token operator">=</span><span class="token number">0.15</span><span class="token punctuation">,</span> random_state<span class="token operator">=</span><span class="token number">666</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># noise噪音,添加标准差</span>
+<span class="token comment" spellcheck="true"># X.shape : (100, 2) ---- y.shape : (100,)</span>
+
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>preprocessing <span class="token keyword">import</span> PolynomialFeatures<span class="token punctuation">,</span> StandardScaler
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>svm <span class="token keyword">import</span> LinearSVC
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>pipeline <span class="token keyword">import</span> Pipeline
+
+
+<span class="token comment" spellcheck="true"># 使用Pipeline方便以下操作顺序执行</span>
+<span class="token keyword">def</span> <span class="token function">PolynomialSVC</span><span class="token punctuation">(</span>degree<span class="token punctuation">,</span> C<span class="token operator">=</span><span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> Pipeline<span class="token punctuation">(</span><span class="token punctuation">[</span>
+        <span class="token punctuation">(</span><span class="token string">"poly"</span><span class="token punctuation">,</span> PolynomialFeatures<span class="token punctuation">(</span>degree<span class="token operator">=</span>degree<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>    <span class="token comment" spellcheck="true"># 第一步传入degree</span>
+        <span class="token punctuation">(</span><span class="token string">"std_scaler"</span><span class="token punctuation">,</span> StandardScaler<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>               <span class="token comment" spellcheck="true"># 第二步数据归一化</span>
+        <span class="token punctuation">(</span><span class="token string">"linearSVC"</span><span class="token punctuation">,</span> LinearSVC<span class="token punctuation">(</span>C<span class="token operator">=</span>C<span class="token punctuation">)</span><span class="token punctuation">)</span>                   <span class="token comment" spellcheck="true"># 第三步调用svm算法,C是正则化参数</span>
+    <span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+
+poly_svc <span class="token operator">=</span> PolynomialSVC<span class="token punctuation">(</span>degree<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">)</span>
+poly_svc<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X<span class="token punctuation">,</span> y<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 训练</span>
 
 
 <span class="token comment" spellcheck="true"># 绘制决策边界</span>
@@ -403,61 +390,87 @@ dt_clf<span class="token punctuation">.</span>fit<span class="token punctuation"
     <span class="token keyword">from</span> matplotlib<span class="token punctuation">.</span>colors <span class="token keyword">import</span> ListedColormap
     custom_cmap <span class="token operator">=</span> ListedColormap<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'#EF9A9A'</span><span class="token punctuation">,</span> <span class="token string">'#FFF59D'</span><span class="token punctuation">,</span> <span class="token string">'#90CAF9'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 
-    plt<span class="token punctuation">.</span>contourf<span class="token punctuation">(</span>x0<span class="token punctuation">,</span> x1<span class="token punctuation">,</span> zz<span class="token punctuation">,</span> cmap<span class="token operator">=</span>custom_cmap<span class="token punctuation">)</span>
+    plt<span class="token punctuation">.</span>contourf<span class="token punctuation">(</span>x0<span class="token punctuation">,</span> x1<span class="token punctuation">,</span> zz<span class="token punctuation">,</span> linewidth<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">,</span> cmap<span class="token operator">=</span>custom_cmap<span class="token punctuation">)</span>
 
-
-plot_decision_boundary<span class="token punctuation">(</span>dt_clf<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">7.5</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-plt<span class="token punctuation">.</span>scatter<span class="token punctuation">(</span>X<span class="token punctuation">[</span>y<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> X<span class="token punctuation">[</span>y<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-plt<span class="token punctuation">.</span>scatter<span class="token punctuation">(</span>X<span class="token punctuation">[</span>y<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> X<span class="token punctuation">[</span>y<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-plt<span class="token punctuation">.</span>scatter<span class="token punctuation">(</span>X<span class="token punctuation">[</span>y<span class="token operator">==</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> X<span class="token punctuation">[</span>y<span class="token operator">==</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+plot_decision_boundary<span class="token punctuation">(</span>poly_svc<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1.5</span><span class="token punctuation">,</span> <span class="token number">2.5</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.5</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>scatter<span class="token punctuation">(</span>X<span class="token punctuation">[</span>y <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> X<span class="token punctuation">[</span>y <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>scatter<span class="token punctuation">(</span>X<span class="token punctuation">[</span>y <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> X<span class="token punctuation">[</span>y <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="DecisionTreeClassifier-构造函数部分参数及默认值"><a href="#DecisionTreeClassifier-构造函数部分参数及默认值" class="headerlink" title="DecisionTreeClassifier()构造函数部分参数及默认值"></a>DecisionTreeClassifier()构造函数部分参数及默认值</h2><pre class="line-numbers language-python"><code class="language-python">clf <span class="token operator">=</span> KNeighborsClassifier<span class="token punctuation">(</span>n_neighbors<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">,</span>weights<span class="token operator">=</span>’uniform’<span class="token punctuation">,</span> algorithm<span class="token operator">=</span>’auto’<span class="token punctuation">,</span> leaf_size<span class="token operator">=</span><span class="token number">30</span><span class="token punctuation">,</span> p<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> 
-metric<span class="token operator">=</span>’minkowski’<span class="token punctuation">,</span>metric_params<span class="token operator">=</span>None<span class="token punctuation">,</span> n_jobs<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><img src="https://img-blog.csdnimg.cn/0f987bf5134d4be7bf40c2b3958245c9.png" alt="决策边界"></p>
+<h3 id="（2）-使用多项式核函数的SVM"><a href="#（2）-使用多项式核函数的SVM" class="headerlink" title="（2） 使用多项式核函数的SVM"></a>（2） 使用多项式核函数的SVM</h3><p><img src="https://img-blog.csdnimg.cn/969a49ce2cfc4303bc70170800b78e7a.jpeg" alt="什么是核函数"><br><strong>高斯核函数RBF</strong>参考视频<a target="_blank" rel="noopener" href="https://coding.imooc.com/lesson/169.html#mid=10727">bobo老师课程</a></p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 数据集的准备等同上 略</span>
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>svm <span class="token keyword">import</span> SVC
+
+<span class="token keyword">def</span> <span class="token function">PolynomialKernelSVC</span><span class="token punctuation">(</span>degree<span class="token punctuation">,</span> C<span class="token operator">=</span><span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> Pipeline<span class="token punctuation">(</span><span class="token punctuation">[</span>
+        <span class="token punctuation">(</span><span class="token string">"std_scaler"</span><span class="token punctuation">,</span> StandardScaler<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token punctuation">(</span><span class="token string">"kernelSVC"</span><span class="token punctuation">,</span> SVC<span class="token punctuation">(</span>kernel<span class="token operator">=</span><span class="token string">"poly"</span><span class="token punctuation">,</span> degree<span class="token operator">=</span>degree<span class="token punctuation">,</span> C<span class="token operator">=</span>C<span class="token punctuation">)</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># 自动对传进来的数据进行多项式化,再进行SVM</span>
+    <span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+
+poly_kernel_svc <span class="token operator">=</span> PolynomialKernelSVC<span class="token punctuation">(</span>degree<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">)</span>
+poly_kernel_svc<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
+
+plot_decision_boundary<span class="token punctuation">(</span>poly_kernel_svc<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1.5</span><span class="token punctuation">,</span> <span class="token number">2.5</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.5</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>scatter<span class="token punctuation">(</span>X<span class="token punctuation">[</span>y <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> X<span class="token punctuation">[</span>y <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>scatter<span class="token punctuation">(</span>X<span class="token punctuation">[</span>y <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> X<span class="token punctuation">[</span>y <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://img-blog.csdnimg.cn/63a28b9bfdb344ee9e0b3ddab43b824e.png" alt="决策边界"></p>
+<h4 id="SVC-构造函数的参数及默认值"><a href="#SVC-构造函数的参数及默认值" class="headerlink" title="SVC() 构造函数的参数及默认值"></a>SVC() 构造函数的参数及默认值</h4><pre class="line-numbers language-python"><code class="language-python">SVC<span class="token punctuation">(</span>C<span class="token operator">=</span><span class="token number">1.0</span><span class="token punctuation">,</span> cache_size<span class="token operator">=</span><span class="token number">200</span><span class="token punctuation">,</span> class_weight<span class="token operator">=</span>None<span class="token punctuation">,</span> coef0<span class="token operator">=</span><span class="token number">0.0</span><span class="token punctuation">,</span> decision_function_shape<span class="token operator">=</span>None<span class="token punctuation">,</span> 
+    degree<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span> gamma<span class="token operator">=</span><span class="token string">'auto'</span><span class="token punctuation">,</span> kernel<span class="token operator">=</span><span class="token string">'poly'</span><span class="token punctuation">,</span> max_iter<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> probability<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> 
+    random_state<span class="token operator">=</span>None<span class="token punctuation">,</span> 	shrinking<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> tol<span class="token operator">=</span><span class="token number">0.001</span><span class="token punctuation">,</span> verbose<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ol>
-<li><code>criterion=&#39;gini&#39;</code>: 划分标准.默认gini,也可以改成entropy等</li>
-<li><code>max_depth=2</code>: 限制整棵树的最大深度.越大越容易过拟合</li>
-<li><code>max_leaf_nodes=None</code>: 最多有几个叶子结点.越大越容易归你和</li>
-<li><code>min_samples_leaf=1</code>: 对于一个叶子结点,最少应该有几个样本.越小越容易过拟合</li>
-<li><code>min_samples_split=2</code>: 对于一个节点,至少有多少个样本数据,才继续拆分.越小越容易过拟合</li>
+<li><code>kernel</code>：核函数类型，默认为’rbf’，取’poly’时为多项式核函数</li>
+<li><code>C</code>：默认是1.0，正则化参数</li>
+<li><code>degree</code>：多项式核函数的阶数，默认为3。</li>
+<li><code>coef0</code>：核函数中的独立项，多项式核函数中的c</li>
 </ol>
-<h2 id="2-回归问题"><a href="#2-回归问题" class="headerlink" title="2. 回归问题"></a>2. 回归问题</h2><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
-<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
-<span class="token keyword">from</span> sklearn <span class="token keyword">import</span> datasets
+<h2 id="3-使用SVM思想解决回归问题"><a href="#3-使用SVM思想解决回归问题" class="headerlink" title="3. 使用SVM思想解决回归问题"></a>3. 使用SVM思想解决回归问题</h2><p><img src="https://img-blog.csdnimg.cn/d84d0950d9b3444592c9e0930ae861b9.png"><br><strong>不同点：margin范围里包含的点越多越好，说明这个范围更能比较好的表达样本数据点，取中间直线作为回归结果，预测未知点的y值，</strong>  <strong><font color='red'> ε超参数用于指定margin </font></strong></p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> sklearn <span class="token keyword">import</span> datasets
 
 boston <span class="token operator">=</span> datasets<span class="token punctuation">.</span>load_boston<span class="token punctuation">(</span><span class="token punctuation">)</span>
 X <span class="token operator">=</span> boston<span class="token punctuation">.</span>data
 y <span class="token operator">=</span> boston<span class="token punctuation">.</span>target
-<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>model_selection <span class="token keyword">import</span> train_test_split
+
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>model_selection <span class="token keyword">import</span> train_test_split  <span class="token comment" spellcheck="true"># 划分数据集</span>
 
 X_train<span class="token punctuation">,</span> X_test<span class="token punctuation">,</span> y_train<span class="token punctuation">,</span> y_test <span class="token operator">=</span> train_test_split<span class="token punctuation">(</span>X<span class="token punctuation">,</span> y<span class="token punctuation">,</span> random_state<span class="token operator">=</span><span class="token number">666</span><span class="token punctuation">)</span>
 
-<span class="token comment" spellcheck="true"># Decision Tree Regressor</span>
-<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>tree <span class="token keyword">import</span> DecisionTreeRegressor
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>svm <span class="token keyword">import</span> LinearSVR
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>svm <span class="token keyword">import</span> SVR
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>preprocessing <span class="token keyword">import</span> StandardScaler
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>pipeline <span class="token keyword">import</span> Pipeline
 
-dt_reg <span class="token operator">=</span> DecisionTreeRegressor<span class="token punctuation">(</span><span class="token punctuation">)</span>
-dt_reg<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X_train<span class="token punctuation">,</span> y_train<span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">StandardLinearSVR</span><span class="token punctuation">(</span>epsilon<span class="token operator">=</span><span class="token number">0.1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> Pipeline<span class="token punctuation">(</span><span class="token punctuation">[</span>
+        <span class="token punctuation">(</span><span class="token string">'std_scaler'</span><span class="token punctuation">,</span> StandardScaler<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     <span class="token comment" spellcheck="true"># 数据标准化</span>
+        <span class="token punctuation">(</span><span class="token string">'linearSVR'</span><span class="token punctuation">,</span> LinearSVR<span class="token punctuation">(</span>epsilon<span class="token operator">=</span>epsilon<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 也可用SVR()传入不同的核函数来处理数据</span>
+    <span class="token punctuation">]</span><span class="token punctuation">)</span>
 
-dt_reg<span class="token punctuation">.</span>score<span class="token punctuation">(</span>X_test<span class="token punctuation">,</span> y_test<span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true"># 0.58605479243964098</span>
-dt_reg<span class="token punctuation">.</span>score<span class="token punctuation">(</span>X_train<span class="token punctuation">,</span> y_train<span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true"># 1.0</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+svr <span class="token operator">=</span> StandardLinearSVR<span class="token punctuation">(</span><span class="token punctuation">)</span>
+svr<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X_train<span class="token punctuation">,</span> y_train<span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>svr<span class="token punctuation">.</span>score<span class="token punctuation">(</span>X_test<span class="token punctuation">,</span> y_test<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>对于线性SVM，用LinearSVR（或者LinearSVC），而不使用SVR（或者SVC） kernel&#x3D;’linear’。一般情况二者的结果没有差异。且LinearSVR（LinearSVC）效率会更高一些</p>
 <hr>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><p> <strong>1. 优点</strong></p>
 <ul>
-<li>计算复杂度不高，输出结果易于理解，可解释性强</li>
-<li>对中间值的缺失不敏感</li>
-<li>可以处理不相关特征和数据</li>
+<li>可用于线性&#x2F;非线性分类(引入核函数)，也可以用于回归。泛化错误率低，也就是说具有良好的学习能力，且学到的结果具有很好的推广性。</li>
+<li>可以解决小样本情况下的机器学习问题，可以解决高维问题，可以避免神经网络结构选择和局部极小点问题。</li>
+<li>SVM是最好的现成的分类器，现成是指不加修改可直接使用。并且能够得到较低的错误率，SVM可以对训练集之外的数据点做很好的分类决策。</li>
 </ul>
 <p><strong>2. 缺点</strong></p>
 <ul>
-<li>可能会产生过拟合的问题</li>
-<li>适用数据类型：数值型和标称型(是或否)</li>
+<li>对参数调节和和函数的选择敏感，对缺失数据敏感</li>
+<li>在样本量非常大时，核函数中內积的计算，求解拉格朗日乘子α 值的计算都是和样本个数有关的，会导致在求解模型时的计算量过大</li>
+<li>用SVM解决多分类问题存在困难（需要通过多个二类支持向量机的组合来解决）</li>
 </ul>
 <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><ol>
-<li>书上提到：“预剪枝显著减少了决策树的训练时间开销和测试时间开销‘”。以西瓜的例子来讲，预剪枝需要在验证集计算如果不再以当前属性划分，验证集的精度是多少；如果以当前属性划分，验证集的精度是多少；然后通过两个精度对比，决定是否继续划分。这不是增加了训练时间吗？本来只需要直接划分就好了。是因为如果当前节点不再划分，就没有后续子节点了，所以树的深度小了，所以训练时间开销降低吗？</li>
+<li>待完善</li>
 </ol>
 
                 
@@ -485,7 +498,7 @@ dt_reg<span class="token punctuation">.</span>score<span class="token punctuatio
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://Yunchang-Liu.github.io/2022/10/14/ML-DecisionTree/">https://Yunchang-Liu.github.io/2022/10/14/ML-DecisionTree/</a>
+                    <a href="https://Yunchang-Liu.github.io/2022/10/20/ML-SVM/">https://Yunchang-Liu.github.io/2022/10/20/ML-SVM/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -568,29 +581,29 @@ dt_reg<span class="token punctuation">.</span>score<span class="token punctuatio
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2022/10/16/ML-NaiveBayes/">
+                <a href="/2022/10/20/ML-SVM/">
                     <div class="card-image">
                         
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="机器学习之SVM">
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="机器学习之朴素贝叶斯">
-                        
-                        <span class="card-title">机器学习之朴素贝叶斯</span>
+                        <span class="card-title">机器学习之SVM</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Naive Bayes
+                            Support Vector Machine
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-16
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-20
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -603,6 +616,7 @@ dt_reg<span class="token punctuation">.</span>score<span class="token punctuatio
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -621,24 +635,24 @@ dt_reg<span class="token punctuation">.</span>score<span class="token punctuatio
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/10/13/ML-KNN/">
+                <a href="/2022/10/18/ML-LogisticRegression/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="机器学习之k-近邻算法">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="机器学习之逻辑回归">
                         
-                        <span class="card-title">机器学习之k-近邻算法</span>
+                        <span class="card-title">机器学习之逻辑回归</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            K-Nearest Neighbor
+                            Logistic Regression
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-18
                             </span>
                         <span class="publish-author">
                             
