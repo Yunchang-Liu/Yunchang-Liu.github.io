@@ -1,0 +1,1016 @@
+<!DOCTYPE HTML>
+<html lang="en, zh-CN">
+
+
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="keywords" content="机器学习之聚类, Yunchang">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>机器学习之聚类 | Yunchang</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Yunchang</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Yunchang</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">机器学习之聚类</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="container content">
+
+    
+    <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                <span class="chip bg-color">机器学习</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                机器学习
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2022-10-23
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
+                    2022-10-23
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+                    2.1k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
+                    8 Min
+                </div>
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <ul>
+<li><a href="#%E4%B8%80%E8%81%9A%E7%B1%BB%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D">一、聚类基本介绍</a></li>
+<li><a href="#%E4%BA%8C%E6%80%A7%E8%83%BD%E5%BA%A6%E9%87%8F">二、性能度量</a><ul>
+<li><a href="#1-%E5%A4%96%E9%83%A8%E6%8C%87%E6%A0%87">1. 外部指标</a></li>
+<li><a href="#2-%E5%86%85%E9%83%A8%E6%8C%87%E6%A0%87">2. 内部指标</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%89%E8%B7%9D%E7%A6%BB%E8%AE%A1%E7%AE%97">三、距离计算</a><ul>
+<li><a href="#1-%E9%92%88%E5%AF%B9%E6%9C%89%E5%BA%8F%E5%B1%9E%E6%80%A7">1. 针对有序属性</a></li>
+<li><a href="#2-%E9%92%88%E5%AF%B9%E6%97%A0%E5%BA%8F%E5%B1%9E%E6%80%A7">2. 针对无序属性</a></li>
+<li><a href="#3-%E9%92%88%E5%AF%B9%E6%B7%B7%E5%90%88%E5%B1%9E%E6%80%A7">3. 针对混合属性</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9B%9B%E5%8E%9F%E5%9E%8B%E8%81%9A%E7%B1%BB">四、原型聚类</a><ul>
+<li><a href="#k-%E5%9D%87%E5%80%BC%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95">K-均值聚类算法</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%94%E5%B1%82%E6%AC%A1%E8%81%9A%E7%B1%BB">五、层次聚类</a></li>
+<li><a href="#%E5%85%AD%E5%AF%86%E5%BA%A6%E8%81%9A%E7%B1%BB">六、密度聚类</a></li>
+<li><a href="#%E9%97%AE%E9%A2%98">问题</a></li>
+</ul>
+<h1 id="一、聚类基本介绍"><a href="#一、聚类基本介绍" class="headerlink" title="一、聚类基本介绍"></a>一、聚类基本介绍</h1><p><strong>Clustering</strong></p>
+<ol>
+<li>将数据集在某些方面相似的数据成员进行分类组织的过程</li>
+<li>无监督学习算法</li>
+</ol>
+<p><font color='red'><strong>聚类前需要进行数据标准化！</strong></font></p>
+<hr>
+<h1 id="二、性能度量"><a href="#二、性能度量" class="headerlink" title="二、性能度量"></a>二、性能度量</h1><p>我们希望同一簇的样本应该尽可能彼此相似，不同簇的样本尽可能不同。</p>
+<p><font color='red'><strong>详细内容见西瓜书p198-p199</strong></font></p>
+<h2 id="1-外部指标"><a href="#1-外部指标" class="headerlink" title="1. 外部指标"></a>1. 外部指标</h2><p>将聚类结果与某个“参考模型”进行比较。</p>
+<h3 id="1-1-Jaccard系数"><a href="#1-1-Jaccard系数" class="headerlink" title="1.1 Jaccard系数"></a>1.1 Jaccard系数</h3><h3 id="1-2-FM指数"><a href="#1-2-FM指数" class="headerlink" title="1.2 FM指数"></a>1.2 FM指数</h3><h3 id="1-3-Rand指数"><a href="#1-3-Rand指数" class="headerlink" title="1.3 Rand指数"></a>1.3 Rand指数</h3><h2 id="2-内部指标"><a href="#2-内部指标" class="headerlink" title="2. 内部指标"></a>2. 内部指标</h2><p>直接考察聚类结果而不利用任何参考模型。</p>
+<h3 id="2-1-Davies-Bouldin-Index-DBI"><a href="#2-1-Davies-Bouldin-Index-DBI" class="headerlink" title="2.1 Davies-Bouldin Index (DBI)"></a>2.1 Davies-Bouldin Index (DBI)</h3><h3 id="2-2-Dumm-Index-DI"><a href="#2-2-Dumm-Index-DI" class="headerlink" title="2.2 Dumm Index (DI)"></a>2.2 Dumm Index (DI)</h3><hr>
+<h1 id="三、距离计算"><a href="#三、距离计算" class="headerlink" title="三、距离计算"></a>三、距离计算</h1><h2 id="1-针对有序属性"><a href="#1-针对有序属性" class="headerlink" title="1. 针对有序属性"></a>1. 针对有序属性</h2><p>例如“1”和“2”比较近，“3”比较远<br><img src="https://img-blog.csdnimg.cn/dc809efa85ce4fd9ba2b8fb0e0313cb4.jpeg" alt="闵可夫斯基、欧拉、曼哈顿距离"></p>
+<h2 id="2-针对无序属性"><a href="#2-针对无序属性" class="headerlink" title="2. 针对无序属性"></a>2. 针对无序属性</h2><p>例如{飞机，火车，轮船}这样的离散属性，不能直接在属性值上计算距离，一般采用VDM进行距离的计算<br><img src="https://img-blog.csdnimg.cn/40483cd13ba646448a903d3166d9a9ed.png" alt="VDM距离"><br>m<sub>u,a</sub>表示在属性u上取值为a的样本数<br>m<sub>u,a,i</sub>表示第i个样本簇中在属性u上取值为a的样本数</p>
+<h2 id="3-针对混合属性"><a href="#3-针对混合属性" class="headerlink" title="3. 针对混合属性"></a>3. 针对混合属性</h2><p>假设有n<sub>c</sub>个有序属性，n-n<sub>c</sub>个无序属性<br><img src="https://img-blog.csdnimg.cn/40492fde4095466bada65d9331149d26.png" alt="混合属性距离"><br>若不同属性的重要性不同时，可使用加权距离<br><img src="https://img-blog.csdnimg.cn/71dde0504b5b47109e8ce6a62a670eee.png" alt="加权闵可夫斯基距离"></p>
+<hr>
+<h1 id="四、原型聚类"><a href="#四、原型聚类" class="headerlink" title="四、原型聚类"></a>四、原型聚类</h1><h2 id="K-均值聚类算法"><a href="#K-均值聚类算法" class="headerlink" title="K-均值聚类算法"></a>K-均值聚类算法</h2><p>K-means Clustering：给定一个数据点集合和需要的聚类数目k(用户指定)，根据某个距离函数反复地把数据分入k个聚类中。</p>
+<ol>
+<li><strong>随机选取k个数据点作为初始聚类中心（某聚类中所有数据点的均值）</strong></li>
+<li><strong>计算每个数据点与各个种子聚类中心之间的距离，把每个数据点分配给距离它最近的聚类中心，形成一个聚类</strong></li>
+<li><strong>待所有数据点均被分配后，每个聚类根据当前聚类中的数据点，重新计算出新的聚类中心</strong></li>
+<li><strong>以上步骤不断重复，直到没有(或最小数目)数据点被重新分配给不同的聚类&#x2F;没有(或最小数目)聚类中心再发生变化&#x2F;误差平方和(SSE)局部最小</strong></li>
+</ol>
+<p><font color='red'>具体过程配上web数据挖掘P90图4.3</font></p>
+<hr>
+<h3 id="python实现"><a href="#python实现" class="headerlink" title="python实现"></a>python实现</h3><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+
+<span class="token keyword">def</span> <span class="token function">loadDataSet</span><span class="token punctuation">(</span>filename<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    dataMat <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    f <span class="token operator">=</span> open<span class="token punctuation">(</span>filename<span class="token punctuation">)</span>
+    <span class="token keyword">for</span> line <span class="token keyword">in</span> f<span class="token punctuation">.</span>readlines<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        curLine <span class="token operator">=</span> line<span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        fltLine <span class="token operator">=</span> list<span class="token punctuation">(</span>map<span class="token punctuation">(</span>float<span class="token punctuation">,</span> curLine<span class="token punctuation">)</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># 将所有元素都映射成float()</span>
+        dataMat<span class="token punctuation">.</span>append<span class="token punctuation">(</span>fltLine<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> dataMat
+
+
+<span class="token keyword">def</span> <span class="token function">distEclud</span><span class="token punctuation">(</span>vecA<span class="token punctuation">,</span> vecB<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> np<span class="token punctuation">.</span>sqrt<span class="token punctuation">(</span>np<span class="token punctuation">.</span>sum<span class="token punctuation">(</span>np<span class="token punctuation">.</span>power<span class="token punctuation">(</span>vecA<span class="token operator">-</span>vecB<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+
+<span class="token comment" spellcheck="true"># 构建一个包含k个随机质心的集合</span>
+<span class="token keyword">def</span> <span class="token function">randCent</span><span class="token punctuation">(</span>dataSet<span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    n <span class="token operator">=</span> np<span class="token punctuation">.</span>shape<span class="token punctuation">(</span>dataSet<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+    centroids <span class="token operator">=</span> np<span class="token punctuation">.</span>mat<span class="token punctuation">(</span>np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> range<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        minJ <span class="token operator">=</span> np<span class="token punctuation">.</span>min<span class="token punctuation">(</span>dataSet<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> j<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        rangeJ <span class="token operator">=</span> float<span class="token punctuation">(</span>np<span class="token punctuation">.</span>max<span class="token punctuation">(</span>dataSet<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span> minJ<span class="token punctuation">)</span>
+        centroids<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> j<span class="token punctuation">]</span> <span class="token operator">=</span> minJ <span class="token operator">+</span> rangeJ <span class="token operator">*</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>rand<span class="token punctuation">(</span>k<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> centroids
+
+
+<span class="token triple-quoted-string string">"""
+创建k个点作为起始质心(随机选择)
+当任意一个点的簇分配结果发生改变时
+    对数据集中的每个数据点
+        对每个质心
+            计算质心与数据点的距离
+        将数据点分配到距离其最近的簇
+    对每一个簇，计算簇中所有点的均值并将均值作为质心
+"""</span>
+
+<span class="token keyword">def</span> <span class="token function">kMeans</span><span class="token punctuation">(</span>dataSet<span class="token punctuation">,</span> k<span class="token punctuation">,</span> distMeas<span class="token operator">=</span>distEclud<span class="token punctuation">,</span> createCent<span class="token operator">=</span>randCent<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    m <span class="token operator">=</span> np<span class="token punctuation">.</span>shape<span class="token punctuation">(</span>dataSet<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>  <span class="token comment" spellcheck="true"># 有几个样本</span>
+    clusterAssment <span class="token operator">=</span> np<span class="token punctuation">.</span>mat<span class="token punctuation">(</span>np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span>m<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>     <span class="token comment" spellcheck="true"># 簇分配及结果矩阵 列1:簇索引值 列2:存储误差</span>
+    centroids <span class="token operator">=</span> createCent<span class="token punctuation">(</span>dataSet<span class="token punctuation">,</span> k<span class="token punctuation">)</span>
+    clusterChanged <span class="token operator">=</span> <span class="token boolean">True</span>  <span class="token comment" spellcheck="true"># 循环条件</span>
+    <span class="token keyword">while</span> clusterChanged<span class="token punctuation">:</span>
+        clusterChanged <span class="token operator">=</span> <span class="token boolean">False</span>
+
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment" spellcheck="true"># 对每个样本点</span>
+            minDist <span class="token operator">=</span> np<span class="token punctuation">.</span>inf  <span class="token comment" spellcheck="true"># 设为无穷大</span>
+            minIndex <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span>
+
+            <span class="token keyword">for</span> j <span class="token keyword">in</span> range<span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment" spellcheck="true"># 对于每个质心</span>
+                distance <span class="token operator">=</span> distMeas<span class="token punctuation">(</span>centroids<span class="token punctuation">[</span>j<span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">,</span> dataSet<span class="token punctuation">[</span>i<span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># 计算当前点与质心的距离</span>
+                <span class="token keyword">if</span> distance <span class="token operator">&lt;</span> minDist<span class="token punctuation">:</span>  <span class="token comment" spellcheck="true"># 若当前距离小于之前的最小距离</span>
+                    minIndex <span class="token operator">=</span> j        <span class="token comment" spellcheck="true"># 更新簇索引</span>
+                    minDist <span class="token operator">=</span> distance  <span class="token comment" spellcheck="true"># 更新最小距离</span>
+
+            <span class="token keyword">if</span> clusterAssment<span class="token punctuation">[</span>i<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">!=</span> minIndex<span class="token punctuation">:</span>    <span class="token comment" spellcheck="true"># 若当前样本点簇索引改变</span>
+                clusterChanged <span class="token operator">=</span> <span class="token boolean">True</span>               <span class="token comment" spellcheck="true"># 则需要进行下一轮循环</span>
+                clusterAssment<span class="token punctuation">[</span>i<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> minIndex     <span class="token comment" spellcheck="true"># 更新数据</span>
+            clusterAssment<span class="token punctuation">[</span>i<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> minDist<span class="token operator">**</span><span class="token number">2</span>       <span class="token comment" spellcheck="true"># 计算SSE误差平方和</span>
+
+        <span class="token keyword">for</span> cent <span class="token keyword">in</span> range<span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment" spellcheck="true"># 对每一个簇，更新质心</span>
+            ptsInClust <span class="token operator">=</span> dataSet<span class="token punctuation">[</span>np<span class="token punctuation">.</span>nonzero<span class="token punctuation">(</span>clusterAssment<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>A <span class="token operator">==</span> cent<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span>  <span class="token comment" spellcheck="true"># 获取在这一簇中的所有样本点</span>
+            centroids<span class="token punctuation">[</span>cent<span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">=</span> np<span class="token punctuation">.</span>mean<span class="token punctuation">(</span>ptsInClust<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># 列的均值，沿着行</span>
+
+    <span class="token keyword">return</span> centroids<span class="token punctuation">,</span> clusterAssment
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    dataMat <span class="token operator">=</span> np<span class="token punctuation">.</span>mat<span class="token punctuation">(</span>loadDataSet<span class="token punctuation">(</span><span class="token string">'testSet.txt'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    myCentroids<span class="token punctuation">,</span> clustAssing <span class="token operator">=</span> kMeans<span class="token punctuation">(</span>dataMat<span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>myCentroids<span class="token punctuation">,</span> clustAssing<span class="token punctuation">)</span>
+    
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>k是用户自定的参数，难以准确确定。</li>
+<li>生成簇可能不是最优簇，因为最开始的质心是随机出来的，只能保证从这个起点出发得到的距离最小值（局部最小值），而无法保证是全局的距离最小值。</li>
+<li>可以采用SSE(Sum of Squared Error，误差平方和)来度量聚类的效果。SSE值越小表示数据点越接近于它们的质心，聚类效果也越好。因为对误差取了平方，因此更重视那些远离中心的点。</li>
+<li>一种方法是可以将具有最大SSE的簇划分成2个簇，然后为了保持簇数不变，再将某两个离得近的簇合并。</li>
+</ul>
+<p>一种改进算法<font color='red'><strong>二分K-均值算法</strong></font>略</p>
+<hr>
+<h3 id="sklearn实现"><a href="#sklearn实现" class="headerlink" title="sklearn实现"></a>sklearn实现</h3><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>datasets<span class="token punctuation">.</span>_samples_generator <span class="token keyword">import</span> make_blobs
+
+X<span class="token punctuation">,</span> y_true <span class="token operator">=</span> make_blobs<span class="token punctuation">(</span>n_samples<span class="token operator">=</span><span class="token number">300</span><span class="token punctuation">,</span> centers<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">,</span> cluster_std<span class="token operator">=</span><span class="token number">0.60</span><span class="token punctuation">,</span> random_state<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>  
+<span class="token comment" spellcheck="true"># 生成测试集</span>
+plt<span class="token punctuation">.</span>scatter<span class="token punctuation">(</span>X<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> X<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> s<span class="token operator">=</span><span class="token number">50</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># ---------------------KMeans--------------------</span>
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>cluster <span class="token keyword">import</span> KMeans
+
+m_kmeans <span class="token operator">=</span> KMeans<span class="token punctuation">(</span>n_clusters<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">)</span>  
+m_kmeans<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X<span class="token punctuation">)</span>
+y_pred <span class="token operator">=</span> m_kmeans<span class="token punctuation">.</span>predict<span class="token punctuation">(</span>X<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># ---------------------KMeans--------------------</span>
+
+<span class="token keyword">from</span> sklearn <span class="token keyword">import</span> metrics
+
+<span class="token keyword">def</span> <span class="token function">draw</span><span class="token punctuation">(</span>m_kmeans<span class="token punctuation">,</span>X<span class="token punctuation">,</span>y_pred<span class="token punctuation">,</span>n_clusters<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    centers <span class="token operator">=</span> m_kmeans<span class="token punctuation">.</span>cluster_centers_
+    <span class="token keyword">print</span><span class="token punctuation">(</span>centers<span class="token punctuation">)</span>
+    plt<span class="token punctuation">.</span>scatter<span class="token punctuation">(</span>X<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> X<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> c<span class="token operator">=</span>y_pred<span class="token punctuation">,</span> s<span class="token operator">=</span><span class="token number">50</span><span class="token punctuation">,</span> cmap<span class="token operator">=</span><span class="token string">'viridis'</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 中心点（质心）用红色标出</span>
+    plt<span class="token punctuation">.</span>scatter<span class="token punctuation">(</span>centers<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> centers<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> c<span class="token operator">=</span><span class="token string">'red'</span><span class="token punctuation">,</span> s<span class="token operator">=</span><span class="token number">200</span><span class="token punctuation">,</span> alpha<span class="token operator">=</span><span class="token number">0.5</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Calinski-Harabasz score：%lf"</span> <span class="token operator">%</span> metrics<span class="token punctuation">.</span>calinski_harabasz_score<span class="token punctuation">(</span>X<span class="token punctuation">,</span> y_pred<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    plt<span class="token punctuation">.</span>title<span class="token punctuation">(</span><span class="token string">"K-Means (clusters = %d)"</span> <span class="token operator">%</span> n_clusters<span class="token punctuation">,</span> fontsize<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">)</span>
+    plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+draw<span class="token punctuation">(</span>m_kmeans<span class="token punctuation">,</span>X<span class="token punctuation">,</span>y_pred<span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span>	<span class="token comment" spellcheck="true"># 画出聚类结果</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="KMeans-参数及属性"><a href="#KMeans-参数及属性" class="headerlink" title="KMeans()参数及属性"></a>KMeans()参数及属性</h4><pre class="line-numbers language-python"><code class="language-python">    KMeans<span class="token punctuation">(</span>n_clusters<span class="token operator">=</span><span class="token number">8</span><span class="token punctuation">,</span> init<span class="token operator">=</span><span class="token string">'k-means++'</span><span class="token punctuation">,</span> n_init<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">,</span> max_iter<span class="token operator">=</span><span class="token number">300</span><span class="token punctuation">,</span>
+            tol<span class="token operator">=</span><span class="token number">0.0001</span><span class="token punctuation">,</span> precompute_distances<span class="token operator">=</span><span class="token string">'auto'</span><span class="token punctuation">,</span> verbose<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> 
+            random_state<span class="token operator">=</span>None<span class="token punctuation">,</span> copy_x<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> n_jobs<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> algorithm<span class="token operator">=</span><span class="token string">'auto'</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ol>
+<li><code>n_clusters</code>: 聚类个数</li>
+<li><code>max_iter</code>：  最大迭代数</li>
+<li><code>n_init</code>：    用不同的质心初始化值运行算法的次数</li>
+<li><code>init</code>：      初始化质心的方法</li>
+<li><code>precompute_distances</code>：预计算距离</li>
+<li><code>tol</code>：关于收敛的参数</li>
+<li><code>algorithm</code>：“auto”, “full” or “elkan” ，”full”就是我们传统的K-Means算法，“elkan”elkan K-Means算法。默认的”auto”则会根据数据值是否是稀疏的，来决定如何选择”full”和“elkan”,稠密的选 “elkan”，否则就是”full”</li>
+</ol>
+<ul>
+<li><code>cluster_centers_</code>：质心坐标</li>
+<li><code>labels_</code>: 每个点的分类列表[0,1,0,1,2,3] </li>
+<li><code>inertia_</code>：每个点到其簇的质心的距离之和</li>
+</ul>
+<hr>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>简洁、效率高，容易理解也容易实现。</p>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>算法只能应用于均值能够被定义的数据集中</li>
+<li>用户需要事先指定聚类数目k</li>
+<li>算法对于异常值十分敏感</li>
+<li>算法对初始聚类中心的选取十分敏感</li>
+<li>不适合用于那些形状不是超维椭圆体（或超维球体）的聚类</li>
+</ol>
+<hr>
+<h1 id="五、层次聚类"><a href="#五、层次聚类" class="headerlink" title="五、层次聚类"></a>五、层次聚类</h1><h2 id="1-自上而下聚类"><a href="#1-自上而下聚类" class="headerlink" title="1. 自上而下聚类"></a>1. 自上而下聚类</h2><p>从树状图的最底层开始，每一次通过合并最相似(距离最近)的聚类来形成上一层中的聚类。整个过程当全部数据点都合并到一个聚类(根节点聚类)中时停止。</p>
+<h2 id="2-自下而上聚类"><a href="#2-自下而上聚类" class="headerlink" title="2. 自下而上聚类"></a>2. 自下而上聚类</h2><p>从一个包含全部数据点的聚类(根)开始。然后把根节点聚类分裂成一些子聚类。每个子聚类再递归地继续往下分裂直到每个聚类中只包含一个数据点。</p>
+<h2 id="计算两个聚类之间的距离"><a href="#计算两个聚类之间的距离" class="headerlink" title="计算两个聚类之间的距离"></a>计算两个聚类之间的距离</h2><p><img src="https://img-blog.csdnimg.cn/a10cfd9b38224b618ff886cd5d63f17b.png" alt="数据点样例"></p>
+<ol>
+<li>单链接方法：两个聚类中<strong>距离最近的两个数据点之间的距离</strong>。对噪音敏感，可能发生连锁反应，时间复杂度O(n<sup>2</sup>)</li>
+<li>全链接方法：两个聚类中所有数据点之间距离的最大值。即每次合并最远元素具有最短距离的聚类。（因为distance(B1, C1) &lt; distance(A2, B2)，所以B类和C类合并在一起）</li>
+<li>平均链接方法：一个聚类的所有数据点到另一个类的所有数据点的平均距离。</li>
+</ol>
+<h2 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h2><p>能够使用任何形式的距离或相似度函数，层次结构更能提供一些细节</p>
+<h2 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h2><p>时空复杂度高，对异常值十分敏感</p>
+<hr>
+<h1 id="六、密度聚类"><a href="#六、密度聚类" class="headerlink" title="六、密度聚类"></a>六、密度聚类</h1><h2 id="1-DBSCAN算法"><a href="#1-DBSCAN算法" class="headerlink" title="1. DBSCAN算法"></a>1. DBSCAN算法</h2><hr>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><ol>
+<li>怎样计算例如{飞机，火车，轮船}这样的无序属性之间的距离？VDM(Value Difference)和简单匹配距离(Simple Matching Distance)有什么区别，各自的应用场景是什么？</li>
+</ol>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Messi</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://Yunchang-Liu.github.io/2022/10/23/ML-Clustering/">https://Yunchang-Liu.github.io/2022/10/23/ML-Clustering/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint polocy. If reproduced, please indicate source
+                    <a href="/about" target="_blank">Messi</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                    <span class="chip bg-color">机器学习</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
+            <div class="card">
+                <a href="/2022/10/23/ML-Clustering/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="机器学习之聚类">
+                        
+                        <span class="card-title">机器学习之聚类</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Clustering
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-23
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    机器学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">机器学习</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/10/21/ML-EnsembleLearning%20/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="机器学习之集成学习">
+                        
+                        <span class="card-title">机器学习之集成学习</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Ensemble Learning
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-21
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    机器学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">机器学习</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2022</span>
+            
+            <span id="year">2022</span>
+            <a href="/about" target="_blank">Messi</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">15.9k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2022";
+                    var startMonth = "10";
+                    var startDate = "10";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Yunchang-Liu" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1422857525@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+    <a href="https://blog.csdn.net/m0_46684880" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN" data-position="top" data-delay="50">
+        <i class="fab fa-csdn">C</i>
+    </a>
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</body>
+
+</html>
