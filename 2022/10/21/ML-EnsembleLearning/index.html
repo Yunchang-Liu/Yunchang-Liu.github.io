@@ -1,0 +1,995 @@
+<!DOCTYPE HTML>
+<html lang="en, zh-CN">
+
+
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="keywords" content="机器学习之集成学习, Yunchang">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>机器学习之集成学习 | Yunchang</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Yunchang</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Yunchang</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">机器学习之集成学习</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="container content">
+
+    
+    <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                <span class="chip bg-color">机器学习</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                机器学习
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2022-10-21
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
+                    2022-10-21
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+                    1.9k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
+                    7 Min
+                </div>
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="一、集成学习基本介绍"><a href="#一、集成学习基本介绍" class="headerlink" title="一、集成学习基本介绍"></a>一、集成学习基本介绍</h1><p><strong>Ensemble Learning</strong></p>
+<p> 集成学习本身不是一个单独的机器学习算法，而是通过构建并结合多个机器学习器来完成学习任务。</p>
+<hr>
+<h1 id="二、集成学习算法及sklearn实现"><a href="#二、集成学习算法及sklearn实现" class="headerlink" title="二、集成学习算法及sklearn实现"></a>二、集成学习算法及sklearn实现</h1><h2 id="1-Voting-Classifier"><a href="#1-Voting-Classifier" class="headerlink" title="1. Voting Classifier"></a>1. Voting Classifier</h2><h3 id="（1）Hard-Voting-Classifier"><a href="#（1）Hard-Voting-Classifier" class="headerlink" title="（1）Hard Voting Classifier"></a>（1）Hard Voting Classifier</h3><p>投票：少数服从多数</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> sklearn <span class="token keyword">import</span> datasets
+
+X<span class="token punctuation">,</span> y <span class="token operator">=</span> datasets<span class="token punctuation">.</span>make_moons<span class="token punctuation">(</span>n_samples<span class="token operator">=</span><span class="token number">500</span><span class="token punctuation">,</span> noise<span class="token operator">=</span><span class="token number">0.3</span><span class="token punctuation">,</span> random_state<span class="token operator">=</span><span class="token number">42</span><span class="token punctuation">)</span>
+
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>model_selection <span class="token keyword">import</span> train_test_split  <span class="token comment" spellcheck="true"># 划分数据集</span>
+X_train<span class="token punctuation">,</span> X_test<span class="token punctuation">,</span> y_train<span class="token punctuation">,</span> y_test <span class="token operator">=</span> train_test_split<span class="token punctuation">(</span>X<span class="token punctuation">,</span> y<span class="token punctuation">,</span> random_state<span class="token operator">=</span><span class="token number">42</span><span class="token punctuation">)</span>
+
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>linear_model <span class="token keyword">import</span> LogisticRegression
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>svm <span class="token keyword">import</span> SVC
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>tree <span class="token keyword">import</span> DecisionTreeClassifier
+
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>ensemble <span class="token keyword">import</span> VotingClassifier
+
+voting_clf <span class="token operator">=</span> VotingClassifier<span class="token punctuation">(</span>estimators<span class="token operator">=</span><span class="token punctuation">[</span>   <span class="token comment" spellcheck="true"># estimators估计器</span>
+    <span class="token punctuation">(</span><span class="token string">'log_clf'</span><span class="token punctuation">,</span> LogisticRegression<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>      <span class="token comment" spellcheck="true"># 第一个模型 逻辑回归分类器</span>
+    <span class="token punctuation">(</span><span class="token string">'svm_clf'</span><span class="token punctuation">,</span> SVC<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>                     <span class="token comment" spellcheck="true"># 第二个模型 SVM分类器</span>
+    <span class="token punctuation">(</span><span class="token string">'dt_clf'</span><span class="token punctuation">,</span> DecisionTreeClassifier<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># 第三个模型 决策树</span>
+<span class="token punctuation">]</span><span class="token punctuation">,</span> voting<span class="token operator">=</span><span class="token string">'hard'</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># voting='hard',少数服从多数</span>
+
+voting_clf<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X_train<span class="token punctuation">,</span> y_train<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>voting_clf<span class="token punctuation">.</span>score<span class="token punctuation">(</span>X_test<span class="token punctuation">,</span> y_test<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="（2）Soft-Voting-Classifier"><a href="#（2）Soft-Voting-Classifier" class="headerlink" title="（2）Soft Voting Classifier"></a>（2）Soft Voting Classifier</h3><p>更合理的投票，应该具有权值。要求<strong>集合中的每个模型都能估计概率</strong>，例如逻辑回归、KNN等，SVM中的SVC分类器也可以通过设置参数probability&#x3D;True计算概率。</p>
+<pre class="line-numbers language-python"><code class="language-python">voting_clf2 <span class="token operator">=</span> VotingClassifier<span class="token punctuation">(</span>estimators<span class="token operator">=</span><span class="token punctuation">[</span>   <span class="token comment" spellcheck="true"># estimators估计器</span>
+    <span class="token punctuation">(</span><span class="token string">'log_clf'</span><span class="token punctuation">,</span> LogisticRegression<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>                      <span class="token comment" spellcheck="true"># 第一个模型 逻辑回归分类器</span>
+    <span class="token punctuation">(</span><span class="token string">'svm_clf'</span><span class="token punctuation">,</span> SVC<span class="token punctuation">(</span>probability<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>                     <span class="token comment" spellcheck="true"># 第二个模型 SVM分类器 设置probability=True</span>
+    <span class="token punctuation">(</span><span class="token string">'dt_clf'</span><span class="token punctuation">,</span> DecisionTreeClassifier<span class="token punctuation">(</span>random_state<span class="token operator">=</span><span class="token number">666</span><span class="token punctuation">)</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># 第三个模型 决策树</span>
+<span class="token punctuation">]</span><span class="token punctuation">,</span> voting<span class="token operator">=</span><span class="token string">'soft'</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># voting='hard',少数服从多数</span>
+
+voting_clf2<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X_train<span class="token punctuation">,</span> y_train<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>voting_clf2<span class="token punctuation">.</span>score<span class="token punctuation">(</span>X_test<span class="token punctuation">,</span> y_test<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h2 id="2-Bagging和Pasting"><a href="#2-Bagging和Pasting" class="headerlink" title="2. Bagging和Pasting"></a>2. Bagging和Pasting</h2><p>虽然有很多的机器学习算法，但是从投票的角度看，仍然不够多，如果有成千上万的投票者，才能保证最终结果可信（<strong>大数定律</strong>）。</p>
+<p>所以需要<strong>创建更多的子模型</strong>，并且<strong>子模型之间要有差异性</strong>，不能保持一致。</p>
+<p><font color='red'>每个子模型不需要太高的准确率</font><br><img src="https://img-blog.csdnimg.cn/722062aadb0941608d16266ac2cebc2e.png" alt="每个子模型不需要太高的准确率"></p>
+<h3 id="1-Bagging-放回取样-更常用"><a href="#1-Bagging-放回取样-更常用" class="headerlink" title="1. Bagging(放回取样-更常用)"></a>1. Bagging(放回取样-更常用)</h3><ul>
+<li>从原始样本集中抽取训练集。每轮从原始样本集中使用Bootstraping的方法抽取n个训练样本（在训练集中，有些样本可能被多次抽取到，而有些样本可能一次都没有被抽中）。共进行k轮抽取，得到k个训练集。（k个训练集之间是相互独立的）</li>
+<li>每次使用一个训练集得到一个模型，k个训练集共得到k个模型。</li>
+<li>对<strong>分类问题</strong>：将上步得到的k个模型采用投票的方式得到分类结果；对<strong>回归问题</strong>，计算上述模型的均值作为最后的结果。（所有模型的重要性相同）</li>
+</ul>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>tree <span class="token keyword">import</span> DecisionTreeClassifier
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>ensemble <span class="token keyword">import</span> BaggingClassifier
+
+bagging_clf <span class="token operator">=</span> BaggingClassifier<span class="token punctuation">(</span>DecisionTreeClassifier<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                                n_estimators<span class="token operator">=</span><span class="token number">500</span><span class="token punctuation">,</span>       <span class="token comment" spellcheck="true"># n_estimators:要集成几个决策树模型</span>
+                                max_samples<span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">,</span>        <span class="token comment" spellcheck="true"># max_samples:每个子模型要看多少个样本数据</span>
+                                bootstrap<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>         <span class="token comment" spellcheck="true"># bootstrap:放回取样/不放回取样 若False即Pasting</span>
+
+bagging_clf<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X_train<span class="token punctuation">,</span> y_train<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>bagging_clf<span class="token punctuation">.</span>score<span class="token punctuation">(</span>X_test<span class="token punctuation">,</span> y_test<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>理论上讲</strong>，若n_estimators升为5000越大，准确率更高</p>
+<h4 id="1-1-使用OOB"><a href="#1-1-使用OOB" class="headerlink" title="1.1 使用OOB"></a>1.1 使用OOB</h4><p>OOB(Out-of-Bags)，放回取样会导致平均有37%的样本没有取到。我们可以转而<strong>不使用测试集，而使用这部分没有取到的样本做测试</strong>。</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>tree <span class="token keyword">import</span> DecisionTreeClassifier
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>ensemble <span class="token keyword">import</span> BaggingClassifier
+
+bagging_clf <span class="token operator">=</span> BaggingClassifier<span class="token punctuation">(</span>DecisionTreeClassifier<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                                n_estimators<span class="token operator">=</span><span class="token number">500</span><span class="token punctuation">,</span>       <span class="token comment" spellcheck="true"># n_estimators:要集成几个决策树模型</span>
+                                max_samples<span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">,</span>        <span class="token comment" spellcheck="true"># max_samples:每个子模型要看多少个样本数据</span>
+                                bootstrap<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>         <span class="token comment" spellcheck="true"># bootstrap:放回取样/不放回取样 若False即Pasting</span>
+                                oob_score<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>         <span class="token comment" spellcheck="true"># 放回取样过程中，记录取了哪些</span>
+
+bagging_clf<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X<span class="token punctuation">,</span> y<span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># 传入所有的数据</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>bagging_clf<span class="token punctuation">.</span>oob_score_<span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># oob_score_属性</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>还可以设置参数n_jobs&#x3D;-1进行并行处理。</p>
+<h4 id="1-2-Random-Subspaces"><a href="#1-2-Random-Subspaces" class="headerlink" title="1.2  Random Subspaces"></a>1.2  Random Subspaces</h4><p>针对特征进行随机取样，不针对样本进行随机取样</p>
+<pre class="line-numbers language-python"><code class="language-python">random_subspaces_clf <span class="token operator">=</span> BaggingClassifier<span class="token punctuation">(</span>DecisionTreeClassifier<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                                n_estimators<span class="token operator">=</span><span class="token number">500</span><span class="token punctuation">,</span> max_samples<span class="token operator">=</span><span class="token number">500</span><span class="token punctuation">,</span>        <span class="token comment" spellcheck="true"># max_samples和n_estimators相等，即不针对样本取样</span>
+                                bootstrap<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> oob_score<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>              <span class="token comment" spellcheck="true"># max_features:每次看多少个特征</span>
+                                max_features<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> bootstrap_features<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>     <span class="token comment" spellcheck="true"># bootstrap_features: 对特征放回取样</span>
+                                
+random_subspaces_clf<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X<span class="token punctuation">,</span> y<span class="token punctuation">)</span> 
+random_subspaces_clf<span class="token punctuation">.</span>oob_score_
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="1-3-Random-Patches"><a href="#1-3-Random-Patches" class="headerlink" title="1.3 Random Patches"></a>1.3 Random Patches</h4><p>既针对样本，又针对特征进行随机取样</p>
+<pre class="line-numbers language-python"><code class="language-python">random_patches_clf <span class="token operator">=</span> BaggingClassifier<span class="token punctuation">(</span>DecisionTreeClassifier<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                                n_estimators<span class="token operator">=</span><span class="token number">500</span><span class="token punctuation">,</span> max_samples<span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">,</span>        <span class="token comment" spellcheck="true"># max_samples和n_estimators不相等，即针对样本取样</span>
+                                bootstrap<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> oob_score<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>              <span class="token comment" spellcheck="true"># max_features:每次看多少个特征</span>
+                                max_features<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> bootstrap_features<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>     <span class="token comment" spellcheck="true"># bootstrap_features: 对特征放回取样</span>
+                                
+random_patches_clf<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X<span class="token punctuation">,</span> y<span class="token punctuation">)</span> 
+random_patches_clf<span class="token punctuation">.</span>oob_score_
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h3 id="2-随机森林（Bagging-决策树）"><a href="#2-随机森林（Bagging-决策树）" class="headerlink" title="2. 随机森林（Bagging+决策树）"></a>2. 随机森林（Bagging+决策树）</h3><p>sklearn实现思路：<strong>决策树在节点划分时，在随机的特征子集上寻找最优划分特征</strong></p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>ensemble <span class="token keyword">import</span> RandomForestClassifier
+
+rf_clf <span class="token operator">=</span> RandomForestClassifier<span class="token punctuation">(</span>n_estimators<span class="token operator">=</span><span class="token number">500</span><span class="token punctuation">,</span> random_state<span class="token operator">=</span><span class="token number">666</span><span class="token punctuation">,</span> oob_score<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+
+rf_clf<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
+rf_clf<span class="token punctuation">.</span>oob_score_
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>RandomForestClassifier()</code>有很多参数可以调节，例如max_leaf_nodes每棵决策树最多有多少个叶子结点。</p>
+<p><strong>若在决策树节点划分时，使用随机的特征和随机的阈值，就变成了Extra-Tree</strong> ——提供了额外的随机性，抑制了过拟合，但增大了bias（<font color='red'>增大偏差，遏制方差</font>）</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>ensemble <span class="token keyword">import</span> ExtraTreesClassifier
+
+et_clf <span class="token operator">=</span> ExtraTreesClassifier<span class="token punctuation">(</span>n_estimators<span class="token operator">=</span><span class="token number">500</span><span class="token punctuation">,</span> bootstrap<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> oob_score<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> random_state<span class="token operator">=</span><span class="token number">666</span><span class="token punctuation">)</span>
+
+et_clf<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
+et_clf<span class="token punctuation">.</span>oob_score_
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h2 id="3-Boosting"><a href="#3-Boosting" class="headerlink" title="3. Boosting"></a>3. Boosting</h2><ul>
+<li>每一轮的训练数据样本赋予一个权重，并且每一轮样本的权值分布依赖上一轮的分类结果。</li>
+<li>基分类器之间采用序列式的线性加权方式进行组合。</li>
+</ul>
+<h3 id="1-Ada-Boosting"><a href="#1-Ada-Boosting" class="headerlink" title="1. Ada Boosting"></a>1. Ada Boosting</h3><p><strong>之前分类错的样本会被赋予更高的权重</strong><br><img src="https://img-blog.csdnimg.cn/c1f0caa9075648d3a521969beb0602af.png" alt="AdaBoosting"></p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> sklearn <span class="token keyword">import</span> datasets
+
+X<span class="token punctuation">,</span> y <span class="token operator">=</span> datasets<span class="token punctuation">.</span>make_moons<span class="token punctuation">(</span>n_samples<span class="token operator">=</span><span class="token number">500</span><span class="token punctuation">,</span> noise<span class="token operator">=</span><span class="token number">0.3</span><span class="token punctuation">,</span> random_state<span class="token operator">=</span><span class="token number">42</span><span class="token punctuation">)</span>
+
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>model_selection <span class="token keyword">import</span> train_test_split  <span class="token comment" spellcheck="true"># 划分数据集</span>
+X_train<span class="token punctuation">,</span> X_test<span class="token punctuation">,</span> y_train<span class="token punctuation">,</span> y_test <span class="token operator">=</span> train_test_split<span class="token punctuation">(</span>X<span class="token punctuation">,</span> y<span class="token punctuation">,</span> random_state<span class="token operator">=</span><span class="token number">42</span><span class="token punctuation">)</span>
+
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>ensemble <span class="token keyword">import</span> AdaBoostClassifier
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>tree <span class="token keyword">import</span> DecisionTreeClassifier  <span class="token comment" spellcheck="true"># Base estimator</span>
+
+ada_clf <span class="token operator">=</span> AdaBoostClassifier<span class="token punctuation">(</span>DecisionTreeClassifier<span class="token punctuation">(</span>max_depth<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> n_estimators<span class="token operator">=</span><span class="token number">500</span><span class="token punctuation">)</span>
+ada_clf<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X_train<span class="token punctuation">,</span> y_train<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>ada_clf<span class="token punctuation">.</span>score<span class="token punctuation">(</span>X_test<span class="token punctuation">,</span> y_test<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="2-Gradient-Boosting"><a href="#2-Gradient-Boosting" class="headerlink" title="2. Gradient Boosting"></a>2. Gradient Boosting</h3><p>训练一个模型m1，产生错误e1<br>针对e1训练第二个模型m2，产生错误e2<br>针对e2训练第三个模型m3，产生错误e3…<br>最终预测结果是：m1 + m2 + m3 + …</p>
+<p><img src="https://img-blog.csdnimg.cn/0389217dc49f4694ab70dc2872861f47.png" alt="Gradient Boosting"></p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>ensemble <span class="token keyword">import</span> GradientBoostingClassifier
+
+gb_clf <span class="token operator">=</span> GradientBoostingClassifier<span class="token punctuation">(</span>max_depth<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> n_estimators<span class="token operator">=</span><span class="token number">30</span><span class="token punctuation">)</span>
+
+gb_clf<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X_train<span class="token punctuation">,</span> y_train<span class="token punctuation">)</span>
+gb_clf<span class="token punctuation">.</span>score<span class="token punctuation">(</span>X_test<span class="token punctuation">,</span> y_test<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h2 id="4-Stacking"><a href="#4-Stacking" class="headerlink" title="4. Stacking"></a>4. Stacking</h2><table>
+    <tr>
+        <td ><center><img src="https://img-blog.csdnimg.cn/1c4be1d08d0541f1977240aa493fa915.png" >Stacking</center></td>
+        <td ><center><img src="https://img-blog.csdnimg.cn/ad9f5574af5c4c1eacdbaaa03de5667b.png" >训练过程</center></td>
+    </tr>
+</table>
+
+<p>将训练集分为两份，首先使用第一份训练集subset1，把底下3个模型训练好。然后用我们训练出的这 3 个模型，对 subset2 数据集中的每一个数据进行预测。这样，对于 subset2 数据集中的每一条数据，我们都产生了 3 个结果。同时，subset2 数据集是包含 y 值（真值）的。将这3个结果也就是3个新特征和subset2的y值结合，形成新的数据集，再用来训练上层模型。</p>
+<p><strong>新的数据集的特征数量，和原先数据集的特征数量无关，而是和 stacking 中第一层集合了多少学习算法相关！</strong></p>
+<hr>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><p> <strong>1. 优点</strong></p>
+<ul>
+<li>提高预测性能，直接级联不同模型，容易实现，参数较少</li>
+</ul>
+<p><strong>2. 缺点</strong></p>
+<ul>
+<li>多个模型混合在一起是预测结果不可理解，黑盒系统</li>
+</ul>
+<h2 id="Bagging和Boosting区别"><a href="#Bagging和Boosting区别" class="headerlink" title="Bagging和Boosting区别"></a>Bagging和Boosting区别</h2><ol>
+<li><p><strong>样本选择上：</strong></p>
+<ul>
+<li>Bagging：训练集是在原始集中有放回选取的，从原始集中选出的各轮训练集之间是独立的。</li>
+<li>Boosting：每一轮的训练集不变，只是训练集中每个样例在分类器中的权重发生变化。而权值是根据上一轮的分类结果进行调整。</li>
+</ul>
+</li>
+<li><p><strong>样例权重：</strong></p>
+<ul>
+<li>Bagging：使用均匀取样，每个样例的权重相等。</li>
+<li>Boosting：根据错误率不断调整样例的权值，错误率越大则权重越大。</li>
+</ul>
+</li>
+<li><p><strong>预测函数：</strong></p>
+<ul>
+<li>Bagging：所有预测函数的权重相等。</li>
+<li>Boosting：每个弱分类器都有相应的权重，对于分类误差小的分类器会有更大的权重。</li>
+</ul>
+</li>
+<li><p><strong>并行计算：</strong></p>
+<ul>
+<li>Bagging：各个预测函数可以并行生成。</li>
+<li>Boosting：各个预测函数只能顺序生成，因为后一个模型参数需要前一轮模型的结果。</li>
+</ul>
+</li>
+</ol>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><ol>
+<li>待完善</li>
+</ol>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Messi</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://Yunchang-Liu.github.io/2022/10/21/ML-EnsembleLearning/">https://Yunchang-Liu.github.io/2022/10/21/ML-EnsembleLearning/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint polocy. If reproduced, please indicate source
+                    <a href="/about" target="_blank">Messi</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                    <span class="chip bg-color">机器学习</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2022/10/23/ML-Clustering/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="机器学习之聚类">
+                        
+                        <span class="card-title">机器学习之聚类</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Clustering
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-23
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    机器学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">机器学习</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/10/20/ML-SVM/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="机器学习之SVM">
+                        
+                        <span class="card-title">机器学习之SVM</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Support Vector Machine
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-20
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    机器学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">机器学习</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2022</span>
+            
+            <span id="year">2022</span>
+            <a href="/about" target="_blank">Messi</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">15.8k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2022";
+                    var startMonth = "10";
+                    var startDate = "10";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Yunchang-Liu" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1422857525@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+    <a href="https://blog.csdn.net/m0_46684880" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN" data-position="top" data-delay="50">
+        <i class="fab fa-csdn">C</i>
+    </a>
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</body>
+
+</html>
