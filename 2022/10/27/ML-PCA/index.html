@@ -4,7 +4,7 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="hexo+matery个人主页操作总结, Yunchang">
+    <meta name="keywords" content="机器学习之PCA, Yunchang">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>hexo+matery个人主页操作总结 | Yunchang</title>
+    <title>机器学习之PCA | Yunchang</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -204,12 +204,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">hexo+matery个人主页操作总结</h1>
+                    <h1 class="description center-align post-title">机器学习之PCA</h1>
                 </div>
             </div>
         </div>
@@ -231,8 +231,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/hexo/">
-                                <span class="chip bg-color">hexo</span>
+                            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                <span class="chip bg-color">机器学习</span>
                             </a>
                         
                     </div>
@@ -243,8 +243,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/hexo/" class="post-category">
-                                hexo
+                            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                机器学习
                             </a>
                         
                     </div>
@@ -256,28 +256,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-10-11
+                    2022-10-27
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2022-10-20
+                    2022-10-27
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    681
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    3 Min
+                    5 Min
                 </div>
                 
 
@@ -292,86 +292,104 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="写博客"><a href="#写博客" class="headerlink" title="写博客"></a>写博客</h1><ol>
-<li><p>在_post 文件夹下，新建&amp;&amp;.md 文件或 hexo new &lt;title&gt;</p>
-<p> 基本配置如下：<br> title： 文章标题<br> top： 是否把文章置顶<br> img： 是否给文章定义特色图片，如果不设置，默认从featureimages里面抽取<br> summary： 是否给文章加上摘要，不设置，默认截取文章开头一部分<br> categories： 给文章分类<br> tags： 给文章加标签，可加多个</p>
-</li>
-<li><p>剩下博客书写同csdn一样，可以直接复制过去</p>
-<pre class="line-numbers language-css"><code class="language-css">---
-<span class="token property">title</span><span class="token punctuation">:</span> hexo的个性化配置
-<span class="token property">date</span><span class="token punctuation">:</span> 
-<span class="token property">author</span><span class="token punctuation">:</span> Messi
-<span class="token property">img</span><span class="token punctuation">:</span> /medias/featureimages/<span class="token number">16.</span>jpg         ---指定<span class="token number">16.</span>jpg为文章背景图
-<span class="token property">top</span><span class="token punctuation">:</span> true
-<span class="token property">cover</span><span class="token punctuation">:</span> true
-<span class="token property">coverImg</span><span class="token punctuation">:</span> 
-<span class="token property">password</span><span class="token punctuation">:</span> 
-<span class="token property">toc</span><span class="token punctuation">:</span> false
-<span class="token property">mathjax</span><span class="token punctuation">:</span> false
-<span class="token property">summary</span><span class="token punctuation">:</span> hexo+matery个人主页操作总结
-<span class="token property">categories</span><span class="token punctuation">:</span> hexo
-<span class="token property">tags</span><span class="token punctuation">:</span>
-  - hexo
----
-
-# Your Content<span class="token number">...</span>
-<span class="token number">......</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
+                <h1 id="一、PCA基本介绍"><a href="#一、PCA基本介绍" class="headerlink" title="一、PCA基本介绍"></a>一、PCA基本介绍</h1><p><strong>PCA(Principal Components Analysis)-主成分分析算法</strong></p>
+<ol>
+<li>用于数据降维、可视化、去噪</li>
+<li>非监督学习算法</li>
 </ol>
 <hr>
-<h1 id="网站封面图片"><a href="#网站封面图片" class="headerlink" title="网站封面图片"></a>网站封面图片</h1><p>在<code>myblog\themes\matery\source\medias\banner</code>文件夹下，把每日更换背景图片设置为false后，会默认使用”0.jpg”这张图片，更换为自己喜欢的壁纸即可。</p>
+<h1 id="二、PCA工作原理"><a href="#二、PCA工作原理" class="headerlink" title="二、PCA工作原理"></a>二、PCA工作原理</h1><p><img src="https://img-blog.csdnimg.cn/6cf84844d2b449fabd540bcbd0162f8f.jpeg" alt="主成分分析法"><br><img src="https://img-blog.csdnimg.cn/20f19abc97b041cca0406f4a8e82b686.jpeg" alt="求梯度"><br><img src="https://img-blog.csdnimg.cn/1bcc7301b8a749a280cd42cce09508d7.png" alt="将数据在第一个主成分上的分量去掉"></p>
+<p><img src="https://img-blog.csdnimg.cn/c8f0241696b847aaa87258842393203b.jpeg" alt="样本点矩阵（左）和主成分矩阵（右）"></p>
+<p><strong>目标：每次将空间中多维的样本点映射到一条直线上（要保证样本点之间的间距最大，用方差衡量，即保证样本点的特征丢失得最少），从而实现降了1维。重复上面操作，得到许多条直线，其实就是得到一个新的坐标轴。然后将所有样本点映射到新的坐标轴上，即实现了数据降维，并且最好地保留了样本特征。</strong></p>
+<p><strong>将上图进行步骤总结：</strong></p>
+<ol>
+<li>将所有样本点的均值归零化（每一个样本点的特征都减去该特征对应的均值）<strong>（为了方便求方差）</strong></li>
+<li>将方差中的每一部分，转化成直线向量与样本点向量的点积（均值为0，坐标轴中心是原点）</li>
+<li>将方差设为一个目标函数，转化成了目标函数最优化（越大越好）问题，可使用梯度上升法解决</li>
+<li>求出梯度，通过梯度上升法得到第一主成分w1，是一个向量</li>
+<li>对所有样本点，利用向量减法去掉第一主成分w1上的分量</li>
+<li>重复上述操作找出第二主成分w2，以此类推</li>
+<li>最后得出主成分矩阵，即新的坐标轴</li>
+<li>通过矩阵相乘，将样本点数据映射到新的坐标轴上，最终实现降维</li>
+</ol>
 <hr>
-<h1 id="首页背景图片"><a href="#首页背景图片" class="headerlink" title="首页背景图片"></a>首页背景图片</h1><p>在<code>themes\Matery\source\css\matery.css</code>，ctrl+F快捷键查找body，修改样式如下：</p>
-<pre class="line-numbers language-css"><code class="language-css">body &amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>
-    <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">linear-gradient</span><span class="token punctuation">(</span><span class="token number">60</span>deg, <span class="token function">rgba</span><span class="token punctuation">(</span><span class="token number">255</span>, <span class="token number">165</span>, <span class="token number">150</span>, <span class="token number">0.5</span><span class="token punctuation">)</span> <span class="token number">5%</span>, <span class="token function">rgba</span><span class="token punctuation">(</span><span class="token number">0</span>, <span class="token number">228</span>, <span class="token number">255</span>, <span class="token number">0.35</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token number">0%</span> <span class="token number">0%</span> / cover, <span class="token url">url("https://ae01.alicdn.com/kf/H18a4b998752a4ae68b8e85d432a5aef0l.png")</span>, <span class="token url">url("https://ae01.alicdn.com/kf/H21b5f6b8496141a1979a33666e1074d9x.jpg")</span> <span class="token number">0</span>px <span class="token number">0</span>px<span class="token punctuation">;</span>
-    <span class="token property">background-attachment</span><span class="token punctuation">:</span> fixed<span class="token punctuation">;</span>
-    <span class="token property">margin</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token property">color</span><span class="token punctuation">:</span> <span class="token hexcode">#7F95D1</span><span class="token punctuation">;</span>
-    <span class="token comment" spellcheck="true">/* background-color: #eaeaea;
-    margin: 0;
-    color: #34495e;
-    overflow-x: hidden;
-    overflow-y: auto; */</span>
-&amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<hr>
-<h1 id="修改导航栏、页脚及文章卡片标签的颜色"><a href="#修改导航栏、页脚及文章卡片标签的颜色" class="headerlink" title="修改导航栏、页脚及文章卡片标签的颜色"></a>修改导航栏、页脚及文章卡片标签的颜色</h1><p>在<code>matery.css</code>中找到<code>.bg-color</code>,修改即可：<br>我这里调整成了动态渐变，颜色参考了<a target="_blank" rel="noopener" href="https://www.antmoe.com/posts/7198453/index.html">Hexo 博客之 butterfly 主题优雅更换背景</a></p>
-<pre class="line-numbers language-css"><code class="language-css"><span class="token comment" spellcheck="true">/* 动态渐变 */</span>
-<span class="token atrule"><span class="token rule">@keyframes</span> gradientBG &amp;#123<span class="token punctuation">;</span></span>
-    <span class="token number">0%</span> &amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>
-      <span class="token property">background-position</span><span class="token punctuation">:</span> <span class="token number">0%</span> <span class="token number">50%</span><span class="token punctuation">;</span>
-    &amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>
-    <span class="token number">50%</span> &amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>
-      <span class="token property">background-position</span><span class="token punctuation">:</span> <span class="token number">100%</span> <span class="token number">50%</span><span class="token punctuation">;</span>
-    &amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>
-    <span class="token number">100%</span> &amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>
-      <span class="token property">background-position</span><span class="token punctuation">:</span> <span class="token number">0%</span> <span class="token number">50%</span><span class="token punctuation">;</span>
-    &amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>
-  &amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>
+<h1 id="三、sklearn实现PCA"><a href="#三、sklearn实现PCA" class="headerlink" title="三、sklearn实现PCA"></a>三、sklearn实现PCA</h1><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+<span class="token keyword">from</span> sklearn <span class="token keyword">import</span> datasets
 
-<span class="token number">.</span>bg-color &amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>
-    <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">linear-gradient</span><span class="token punctuation">(</span>-<span class="token number">45</span>deg, <span class="token hexcode">#ee7752</span>, <span class="token hexcode">#e73c7e</span>, <span class="token hexcode">#23a6d5</span>, <span class="token hexcode">#23d5ab</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token property">background-size</span><span class="token punctuation">:</span> <span class="token number">400%</span> <span class="token number">400%</span><span class="token punctuation">;</span>
-    <span class="token property">animation</span><span class="token punctuation">:</span> gradientBG <span class="token number">15</span>s ease infinite<span class="token punctuation">;</span>
-&amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+digits <span class="token operator">=</span> datasets<span class="token punctuation">.</span>load_digits<span class="token punctuation">(</span><span class="token punctuation">)</span>
+X <span class="token operator">=</span> digits<span class="token punctuation">.</span>data
+y <span class="token operator">=</span> digits<span class="token punctuation">.</span>target
+
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>model_selection <span class="token keyword">import</span> train_test_split
+
+X_train<span class="token punctuation">,</span> X_test<span class="token punctuation">,</span> y_train<span class="token punctuation">,</span> y_test <span class="token operator">=</span> train_test_split<span class="token punctuation">(</span>X<span class="token punctuation">,</span> y<span class="token punctuation">,</span> random_state<span class="token operator">=</span><span class="token number">666</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># X_train.shape  --> (1347, 64)</span>
+
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>neighbors <span class="token keyword">import</span> KNeighborsClassifier
+
+knn_clf <span class="token operator">=</span> KNeighborsClassifier<span class="token punctuation">(</span><span class="token punctuation">)</span>
+knn_clf<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X_train<span class="token punctuation">,</span> y_train<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>knn_clf<span class="token punctuation">.</span>score<span class="token punctuation">(</span>X_test<span class="token punctuation">,</span> y_test<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 0.9866666666666667 精度高但64维数据训练时间长</span>
+
+<span class="token comment" spellcheck="true"># 数据降维</span>
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>decomposition <span class="token keyword">import</span> PCA
+
+pca <span class="token operator">=</span> PCA<span class="token punctuation">(</span>n_components<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># 降到2维</span>
+pca<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X_train<span class="token punctuation">)</span>
+X_train_reduction <span class="token operator">=</span> pca<span class="token punctuation">.</span>transform<span class="token punctuation">(</span>X_train<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 将训练数据集降维</span>
+X_test_reduction <span class="token operator">=</span> pca<span class="token punctuation">.</span>transform<span class="token punctuation">(</span>X_test<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 将测试数据集也降维</span>
+
+knn_clf <span class="token operator">=</span> KNeighborsClassifier<span class="token punctuation">(</span><span class="token punctuation">)</span>
+knn_clf<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X_train_reduction<span class="token punctuation">,</span> y_train<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>knn_clf<span class="token punctuation">.</span>score<span class="token punctuation">(</span>X_test_reduction<span class="token punctuation">,</span> y_test<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 0.6066666666666667 精度低但时间快很多</span>
+
+
+<span class="token triple-quoted-string string">"""
+pca.explained_variance_ratio_   返回每一个主成分能解释的方差所占比例,主成分越多和越接近1
+
+array([1.45668166e-01, 1.37354688e-01, 1.17777287e-01, 8.49968861e-02,
+       5.86018996e-02, 5.11542945e-02, 4.26605279e-02, 3.60119663e-02,
+       3.41105814e-02, 3.05407804e-02, 2.42337671e-02, 2.28700570e-02,
+       1.80304649e-02, 1.79346003e-02, 1.45798298e-02, 1.42044841e-02,
+       1.29961033e-02, 1.26617002e-02, 1.01728635e-02, 9.09314698e-03,
+       8.85220461e-03, 7.73828332e-03, 7.60516219e-03, 7.11864860e-03,
+       6.85977267e-03, 5.76411920e-03, 5.71688020e-03, 5.08255707e-03,
+       4.89020776e-03, 4.34888085e-03, 3.72917505e-03, 3.57755036e-03,
+       3.26989470e-03, 3.14917937e-03, 3.09269839e-03, 2.87619649e-03,
+       2.50362666e-03, 2.25417403e-03, 2.20030857e-03, 1.98028746e-03,
+       1.88195578e-03, 1.52769283e-03, 1.42823692e-03, 1.38003340e-03,
+       1.17572392e-03, 1.07377463e-03, 9.55152460e-04, 9.00017642e-04,
+       5.79162563e-04, 3.82793717e-04, 2.38328586e-04, 8.40132221e-05,
+       5.60545588e-05, 5.48538930e-05, 1.08077650e-05, 4.01354717e-06,
+       1.23186515e-06, 1.05783059e-06, 6.06659094e-07, 5.86686040e-07,
+       1.71368535e-33, 7.44075955e-34, 7.44075955e-34, 7.15189459e-34])
+"""</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>pca = PCA(n_components=2)</code> 可以指定主成分数量即降到几维。降到2维<strong>方便数据可视化</strong>，也极大<strong>提高了训练速度</strong>，但会导致<strong>精度下降</strong>很多，因为丢失了很多维度的特征。可以通过分析<code>pca.explained_variance_ratio_</code>返回的数组，将其可视化查看多少维主成分保留信息较多，然后选择降到合适的维度。<br><img src="https://img-blog.csdnimg.cn/e79ac09bc7604b288baf9376c3d6f91b.png" alt="取前n个主成分（x轴）所保留的信息（y轴）"><br>sklearn中的PCA封装了这一过程，可直接指定一个比例，保留这个比例的特征信息。</p>
+<ol>
+<li><code>n_components</code>是&gt;&#x3D;1的整数时，表示期望PCA降维后的特征维度数</li>
+<li><code>n_components</code>是[0,1]的小数时，表示主成分的方差和所占的最小比例阈值，PCA类自己去根据样本特征方差来决定降维到的维度</li>
+</ol>
+<pre class="line-numbers language-python"><code class="language-python">pca <span class="token operator">=</span> PCA<span class="token punctuation">(</span>n_components<span class="token operator">=</span><span class="token number">0.95</span><span class="token punctuation">)</span>
+pca<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X_train<span class="token punctuation">)</span>
+
+X_train_reduction <span class="token operator">=</span> pca<span class="token punctuation">.</span>transform<span class="token punctuation">(</span>X_train<span class="token punctuation">)</span>	<span class="token comment" spellcheck="true"># 降维训练集</span>
+X_test_reduction <span class="token operator">=</span> pca<span class="token punctuation">.</span>transform<span class="token punctuation">(</span>X_test<span class="token punctuation">)</span>	<span class="token comment" spellcheck="true"># 降维测试集</span>
+
+knn_clf <span class="token operator">=</span> KNeighborsClassifier<span class="token punctuation">(</span><span class="token punctuation">)</span>
+knn_clf<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X_train_reduction<span class="token punctuation">,</span> y_train<span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>knn_clf<span class="token punctuation">.</span>score<span class="token punctuation">(</span>X_test_reduction<span class="token punctuation">,</span> y_test<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 0.98</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>pca<span class="token punctuation">.</span>n_components_<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 28</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>输出结果，我们可以打印一下<code>pca.n_components_</code>，发现保留了28个主成分即压缩成28维就能保留95%的样本信息，精度高达0.98，和训练全部样本的<strong>精度所差无几并且极大地减少了训练时间</strong>！</p>
 <hr>
-<h1 id="修改主页的Social-Link"><a href="#修改主页的Social-Link" class="headerlink" title="修改主页的Social Link"></a>修改主页的Social Link</h1><p>除了在主题的yml文件中socialLink:添加链接，还要修改ejs文件，文件在主题目录下的layout文件夹下的_partial文件夹，修改social-link.ejs，添加相关的配置</p>
-<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>%</span> <span class="token attr-name">if</span> <span class="token attr-name">(theme.socialLink.csdn)</span> <span class="token attr-name">&amp;#123;</span> <span class="token attr-name">%</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>&lt;%<span class="token punctuation">=</span> theme.socialLink.csdn %<span class="token punctuation">></span><span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tooltipped<span class="token punctuation">"</span></span> <span class="token attr-name">target</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>_blank<span class="token punctuation">"</span></span> <span class="token attr-name">data-tooltip</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>关注我的CSDN: &lt;%<span class="token punctuation">=</span> theme.socialLink.csdn %<span class="token punctuation">></span><span class="token punctuation">"</span></span> <span class="token attr-name">data-position</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>top<span class="token punctuation">"</span></span> <span class="token attr-name">data-delay</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>50<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>i</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>fab fa-csdn<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>C<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>i</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>%</span> <span class="token attr-name">&amp;#125;</span> <span class="token attr-name">%</span><span class="token punctuation">></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<hr>
-<h1 id="附：采坑总结"><a href="#附：采坑总结" class="headerlink" title="附：采坑总结"></a>附：采坑总结</h1><ol>
-<li><p>使用hexo-prism-plugin代码高亮插件美化代码块时，默认代码高亮和拓展插件都不起作用。该插件作者几年前就已经探讨过原因和解决方案：<strong>解决的办法是安装hexo-inject，进入到博客项目目录，命令行输入：</strong></p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">npm</span> i hexo-inject -s
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>在页脚有busuanzi统计的站点访问量，hexo s预览模式下会显示<strong>错误的统计数目</strong>，不用担心，部署完成后统计数目会恢复正常！</p>
-</li>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>主成分分析目的是<strong>用较少的变量来代替原来较多的变量，并可以反映原来多个变量的大部分信息</strong>。</p>
+<p>但经过运算之后的<strong>主成分特征维度的含义具有模糊性，解释性差</strong>（我们最多可以理解成主成分只是由原来的坐标维度线性相加的结果，但加出来之后它到底是啥就不好说了）。</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><ol>
+<li>待完善</li>
 </ol>
 
                 
@@ -399,7 +417,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://Yunchang-Liu.github.io/2022/10/11/hexo-summary/">https://Yunchang-Liu.github.io/2022/10/11/hexo-summary/</a>
+                    <a href="https://Yunchang-Liu.github.io/2022/10/27/ML-PCA/">https://Yunchang-Liu.github.io/2022/10/27/ML-PCA/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -437,8 +455,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/hexo/">
-                                    <span class="chip bg-color">hexo</span>
+                                <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                    <span class="chip bg-color">机器学习</span>
                                 </a>
                             
                         </div>
@@ -482,84 +500,36 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2022/10/12/flask-babel/">
+                <a href="/2022/10/27/ML-PCA/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="一文搞懂利用Flask-Babel实现网页多语言翻译切换">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="机器学习之PCA">
                         
-                        <span class="card-title">一文搞懂利用Flask-Babel实现网页多语言翻译切换</span>
+                        <span class="card-title">机器学习之PCA</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Flask-Babel
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-12
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/flask/" class="post-category">
-                                    flask
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/flask/">
-                        <span class="chip bg-color">flask</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/10/11/hexo-summary/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="hexo+matery个人主页操作总结">
-                        
-                        <span class="card-title">hexo+matery个人主页操作总结</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            hexo+matery个人主页操作总结
+                            Principal Components Analysis-主成分分析算法
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-11
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-27
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/hexo/" class="post-category">
-                                    hexo
+                            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    机器学习
                                 </a>
                             
                             
@@ -570,8 +540,57 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/hexo/">
-                        <span class="chip bg-color">hexo</span>
+                    <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">机器学习</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/10/23/ML-Clustering/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="机器学习之聚类">
+                        
+                        <span class="card-title">机器学习之聚类</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Clustering
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-23
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    机器学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">机器学习</span>
                     </a>
                     
                 </div>
