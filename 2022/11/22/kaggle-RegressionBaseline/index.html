@@ -1,0 +1,1044 @@
+<!DOCTYPE HTML>
+<html lang="en, zh-CN">
+
+
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="keywords" content="kaggle-Regression Baseline, Yunchang">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>kaggle-Regression Baseline | Yunchang</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+
+
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Yunchang</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Yunchang</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">kaggle-Regression Baseline</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="container content">
+
+    
+    <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/kaggle/">
+                                <span class="chip bg-color">kaggle</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/kaggle/" class="post-category">
+                                kaggle
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2022-11-22
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
+                    2022-11-22
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+                    1.3k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
+                    6 Min
+                </div>
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="Housing-Prices-Competition（新手赛）"><a href="#Housing-Prices-Competition（新手赛）" class="headerlink" title="Housing Prices Competition（新手赛）"></a>Housing Prices Competition（新手赛）</h1><h1 id="Steps"><a href="#Steps" class="headerlink" title="Steps:"></a>Steps:</h1><ol>
+<li><p><strong>X, y Dataframes Creation</strong></p>
+<ul>
+<li>Import Libraries</li>
+<li>Load data</li>
+</ul>
+</li>
+<li><p><strong>Data Analysis</strong></p>
+<ul>
+<li>Observation</li>
+<li>Correlation between features and target on heatmap</li>
+</ul>
+</li>
+<li><p><strong>Data Cleaning</strong></p>
+<ul>
+<li>Remove the columns with more than half missing values</li>
+<li>Drop columns with most of the rows having only one category (Use <strong>‘violin’ plots</strong> to visulize <strong>categorical data</strong>)</li>
+</ul>
+</li>
+<li><p><strong>Feature Engineering</strong></p>
+<ul>
+<li>Adding new features</li>
+<li>Replacing ordered categories with numbers(<strong>by directly observing the dataset</strong>)</li>
+</ul>
+</li>
+<li><p><strong>Data Visualization</strong></p>
+<ul>
+<li>???</li>
+</ul>
+</li>
+<li><p><strong>Feature Selection</strong></p>
+</li>
+<li><p><strong>Model Creation</strong></p>
+<ul>
+<li>Preprocessing(numerical &amp; categorical)</li>
+<li>Pipeline</li>
+<li>Grid Search</li>
+</ul>
+</li>
+<li><p><strong>Training and Testing Model</strong></p>
+<ul>
+<li>Best Parameters</li>
+</ul>
+</li>
+<li><p><strong>Generate predictions &amp; Save output to CSV file</strong></p>
+</li>
+</ol>
+<h2 id="1-X-y-Dataframes-Creation"><a href="#1-X-y-Dataframes-Creation" class="headerlink" title="1. X, y Dataframes Creation"></a>1. X, y Dataframes Creation</h2><p> X是特征矩阵，y是标签，X_test是测试集（比赛用例无标签值）</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># Read data</span>
+data <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">'/kaggle/input/home-data-for-ml-course/train.csv'</span><span class="token punctuation">,</span> index_col<span class="token operator">=</span><span class="token string">'Id'</span><span class="token punctuation">)</span>
+X_test <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">'/kaggle/input/home-data-for-ml-course/test.csv'</span><span class="token punctuation">,</span> index_col<span class="token operator">=</span><span class="token string">'Id'</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># Remove rows with missing label</span>
+data <span class="token operator">=</span> data<span class="token punctuation">.</span>dropna<span class="token punctuation">(</span>subset<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'SalePrice'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># Split into X and y</span>
+y <span class="token operator">=</span> data<span class="token punctuation">.</span>SalePrice
+X <span class="token operator">=</span> data<span class="token punctuation">.</span>drop<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'SalePrice'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="2-Data-Analysis"><a href="#2-Data-Analysis" class="headerlink" title="2. Data Analysis"></a>2. Data Analysis</h2><p> 观察特征信息，例如数值型特征以及分类型特征的分布情况等，对数据进行初步了解。</p>
+<p> 可通过下列代码观察所有特征的“类型”、“不同取值个数”、“空值个数”</p>
+<pre class="line-numbers language-python"><code class="language-python">info <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>X<span class="token punctuation">.</span>dtypes<span class="token punctuation">,</span> columns<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'Dtype'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+info<span class="token punctuation">[</span><span class="token string">'Unique'</span><span class="token punctuation">]</span> <span class="token operator">=</span> X<span class="token punctuation">.</span>nunique<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>values
+info<span class="token punctuation">[</span><span class="token string">'Null'</span><span class="token punctuation">]</span> <span class="token operator">=</span> X<span class="token punctuation">.</span>isnull<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>sum<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>values
+info
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://img-blog.csdnimg.cn/b72efd568ba94ababe553643c4f299da.png" alt="各特征情况"></p>
+<h2 id="3-Data-Cleaning"><a href="#3-Data-Cleaning" class="headerlink" title="3. Data Cleaning"></a>3. Data Cleaning</h2><h3 id="移除缺失值大于70-的特征"><a href="#移除缺失值大于70-的特征" class="headerlink" title="移除缺失值大于70%的特征"></a>移除缺失值大于70%的特征</h3><pre class="line-numbers language-python"><code class="language-python">miss_col <span class="token operator">=</span> <span class="token punctuation">[</span>col <span class="token keyword">for</span> col <span class="token keyword">in</span> X<span class="token punctuation">.</span>columns <span class="token keyword">if</span> X<span class="token punctuation">[</span>col<span class="token punctuation">]</span><span class="token punctuation">.</span>isnull<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>sum<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">/</span>len<span class="token punctuation">(</span>X<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0.7</span><span class="token punctuation">]</span>
+
+<span class="token comment" spellcheck="true"># Remove columns in X and X_test</span>
+<span class="token keyword">for</span> df <span class="token keyword">in</span> combine<span class="token punctuation">:</span>
+    df<span class="token punctuation">.</span>drop<span class="token punctuation">(</span>miss_col<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> inplace<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="对于分类型特征（小提琴图）"><a href="#对于分类型特征（小提琴图）" class="headerlink" title="对于分类型特征（小提琴图）"></a>对于分类型特征（小提琴图）</h3><pre class="line-numbers language-python"><code class="language-python">fig<span class="token punctuation">,</span> ax <span class="token operator">=</span> plt<span class="token punctuation">.</span>subplots<span class="token punctuation">(</span>nrows<span class="token operator">=</span>ceil<span class="token punctuation">(</span>len<span class="token punctuation">(</span>object_cols<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">,</span> ncols<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">,</span> figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">22</span><span class="token punctuation">,</span> <span class="token number">1.4</span><span class="token operator">*</span>len<span class="token punctuation">(</span>object_cols<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> sharey<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> dpi<span class="token operator">=</span><span class="token number">120</span><span class="token punctuation">)</span>
+
+<span class="token keyword">for</span> col<span class="token punctuation">,</span> subplot <span class="token keyword">in</span> zip<span class="token punctuation">(</span>object_cols<span class="token punctuation">,</span> ax<span class="token punctuation">.</span>flatten<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    freq <span class="token operator">=</span> X<span class="token punctuation">[</span>col<span class="token punctuation">]</span><span class="token punctuation">.</span>value_counts<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    subplot<span class="token punctuation">.</span>ticklabel_format<span class="token punctuation">(</span>style<span class="token operator">=</span><span class="token string">'plain'</span><span class="token punctuation">)</span>
+    plt<span class="token punctuation">.</span>ylim<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">800000</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    plt<span class="token punctuation">.</span>subplots_adjust<span class="token punctuation">(</span>wspace<span class="token operator">=</span><span class="token punctuation">.</span><span class="token number">1</span><span class="token punctuation">,</span>hspace<span class="token operator">=</span><span class="token punctuation">.</span><span class="token number">4</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> tick <span class="token keyword">in</span> subplot<span class="token punctuation">.</span>get_xticklabels<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        tick<span class="token punctuation">.</span>set_rotation<span class="token punctuation">(</span><span class="token number">45</span><span class="token punctuation">)</span>
+    sns<span class="token punctuation">.</span>violinplot<span class="token punctuation">(</span>data<span class="token operator">=</span>X<span class="token punctuation">,</span> x<span class="token operator">=</span>col<span class="token punctuation">,</span> y<span class="token operator">=</span>y<span class="token punctuation">,</span> order<span class="token operator">=</span>freq<span class="token punctuation">.</span>index<span class="token punctuation">,</span> ax<span class="token operator">=</span>subplot<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://img-blog.csdnimg.cn/04b901215d8841d38935824d3a635ec0.png" alt="分类型特征"><br>观察各特征的小提琴图，发现有属性例如“Utilities”，出现了特征偏斜：只有两种类别，而“AllPub”占了绝大多数，“NoSeWa”只占很少数，可以考虑将这个特征去掉。<br><img src="https://img-blog.csdnimg.cn/a43bf70897494a42a116482e92fada2c.png" alt="取值极度偏斜"></p>
+<h3 id="对于数值型特征（箱型图-amp-KDE）"><a href="#对于数值型特征（箱型图-amp-KDE）" class="headerlink" title="对于数值型特征（箱型图&amp;KDE）"></a>对于数值型特征（箱型图&amp;KDE）</h3><ol>
+<li><p>查看训练集和测试集的特征分布是否一致</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 查看训练集和测试集的特征分布是否一致</span>
+dist_cols <span class="token operator">=</span> <span class="token number">6</span>
+dist_rows <span class="token operator">=</span> len<span class="token punctuation">(</span>numerical_cols<span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>figure<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token operator">*</span>dist_cols<span class="token punctuation">,</span> <span class="token number">4</span><span class="token operator">*</span>dist_rows<span class="token punctuation">)</span><span class="token punctuation">)</span>
+i <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token keyword">for</span> col <span class="token keyword">in</span> numerical_cols<span class="token punctuation">:</span>
+    ax <span class="token operator">=</span> plt<span class="token punctuation">.</span>subplot<span class="token punctuation">(</span>dist_rows<span class="token punctuation">,</span> dist_cols<span class="token punctuation">,</span> i<span class="token punctuation">)</span>
+    ax <span class="token operator">=</span> sns<span class="token punctuation">.</span>kdeplot<span class="token punctuation">(</span>X<span class="token punctuation">[</span>col<span class="token punctuation">]</span><span class="token punctuation">,</span> color<span class="token operator">=</span><span class="token string">"Red"</span><span class="token punctuation">,</span> shade<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    ax <span class="token operator">=</span> sns<span class="token punctuation">.</span>kdeplot<span class="token punctuation">(</span>X_test<span class="token punctuation">[</span>col<span class="token punctuation">]</span><span class="token punctuation">,</span> color<span class="token operator">=</span><span class="token string">"Blue"</span><span class="token punctuation">,</span> shade<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    ax<span class="token punctuation">.</span>set_xlabel<span class="token punctuation">(</span>col<span class="token punctuation">)</span>
+    ax<span class="token punctuation">.</span>set_ylabel<span class="token punctuation">(</span><span class="token string">"Frequency"</span><span class="token punctuation">)</span>
+    ax <span class="token operator">=</span> ax<span class="token punctuation">.</span>legend<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"train"</span><span class="token punctuation">,</span> <span class="token string">"test"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    i <span class="token operator">+=</span> <span class="token number">1</span>
+plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p> <img src="https://img-blog.csdnimg.cn/2c96ce45c66e4230943d0917e92c1f30.png" alt="KDE分布图"></p>
+</li>
+</ol>
+<p>若有分布不一致的情况，需要考虑删除此特征。否则可能会导致<strong>模型的泛化能力变差</strong></p>
+<ol start="2">
+<li><p>箱型图进行异常值分析</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">for</span> col <span class="token keyword">in</span> numerical_cols<span class="token punctuation">:</span>
+    plt<span class="token punctuation">.</span>figure<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    sns<span class="token punctuation">.</span>set_theme<span class="token punctuation">(</span>style<span class="token operator">=</span><span class="token string">"whitegrid"</span><span class="token punctuation">)</span>
+    sns<span class="token punctuation">.</span>boxplot<span class="token punctuation">(</span>x<span class="token operator">=</span>X<span class="token punctuation">[</span>col<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    plt<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 关闭figure 避免内存占用</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p> <img src="https://img-blog.csdnimg.cn/3c3d3c1acbb44e19b0bacfdba6159889.png" alt="箱型图"><br> 右边缘右部的点即为异常值，可以考虑去除。</p>
+<pre class="line-numbers language-python"><code class="language-python">X <span class="token operator">=</span> pd<span class="token punctuation">.</span>concat<span class="token punctuation">(</span><span class="token punctuation">[</span>X<span class="token punctuation">,</span> y<span class="token punctuation">]</span><span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 将X和y暂时合并</span>
+
+<span class="token comment" spellcheck="true"># 去除异常值 需要异常小心！</span>
+
+X <span class="token operator">=</span> X<span class="token punctuation">[</span>X<span class="token punctuation">.</span>LotArea <span class="token operator">&lt;</span> <span class="token number">100000</span><span class="token punctuation">]</span>
+X <span class="token operator">=</span> X<span class="token punctuation">[</span>X<span class="token punctuation">.</span>MasVnrArea <span class="token operator">&lt;</span> <span class="token number">1200</span><span class="token punctuation">]</span>
+X <span class="token operator">=</span> X<span class="token punctuation">[</span>X<span class="token punctuation">.</span>BsmtFinSF1 <span class="token operator">&lt;</span> <span class="token number">2000</span><span class="token punctuation">]</span>
+X <span class="token operator">=</span> X<span class="token punctuation">[</span>X<span class="token punctuation">.</span>BsmtUnfSF <span class="token operator">&lt;</span> <span class="token number">2000</span><span class="token punctuation">]</span>
+X <span class="token operator">=</span> X<span class="token punctuation">[</span>X<span class="token punctuation">.</span>TotalBsmtSF <span class="token operator">&lt;</span> <span class="token number">3000</span><span class="token punctuation">]</span>
+X <span class="token operator">=</span> X<span class="token punctuation">[</span>X<span class="token punctuation">[</span><span class="token string">'1stFlrSF'</span><span class="token punctuation">]</span> <span class="token operator">&lt;</span> <span class="token number">3000</span><span class="token punctuation">]</span>
+X <span class="token operator">=</span> X<span class="token punctuation">[</span>X<span class="token punctuation">.</span>GrLivArea <span class="token operator">&lt;</span> <span class="token number">4000</span><span class="token punctuation">]</span>
+X <span class="token operator">=</span> X<span class="token punctuation">[</span>X<span class="token punctuation">.</span>GarageArea <span class="token operator">&lt;</span> <span class="token number">1200</span><span class="token punctuation">]</span>
+X <span class="token operator">=</span> X<span class="token punctuation">[</span>X<span class="token punctuation">.</span>WoodDeckSF <span class="token operator">&lt;</span> <span class="token number">600</span><span class="token punctuation">]</span>
+X <span class="token operator">=</span> X<span class="token punctuation">[</span>X<span class="token punctuation">.</span>OpenPorchSF <span class="token operator">&lt;</span> <span class="token number">400</span><span class="token punctuation">]</span>
+
+y <span class="token operator">=</span> X<span class="token punctuation">.</span>SalePrice
+X <span class="token operator">=</span> X<span class="token punctuation">.</span>drop<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'SalePrice'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ol>
+<h2 id="4-Feature-Engineering"><a href="#4-Feature-Engineering" class="headerlink" title="4. Feature Engineering"></a>4. Feature Engineering</h2><h3 id="添加新特征"><a href="#添加新特征" class="headerlink" title="添加新特征"></a>添加新特征</h3><p><strong>待学习</strong></p>
+<h3 id="将具有明显层级关系的分类型属性转换为数字编码"><a href="#将具有明显层级关系的分类型属性转换为数字编码" class="headerlink" title="将具有明显层级关系的分类型属性转换为数字编码"></a>将具有明显层级关系的分类型属性转换为数字编码</h3><p>例如数据集中的’KitchenQual’，即厨房情况，’Ex’，’Gd’，’TA’，’Fa’，’Po’分别代表’Excellent’，’Good’，’Average&#x2F;Typical’，’Fair’，’Poor’。具有明显的层级关系，例如Excellent说明厨房条件特别好，Poor说明厨房条件特别差，和房价具有很强的相关性。</p>
+<ol>
+<li>将X和X_test合并，方便处理</li>
+<li>查看各分类型特征有多少种不同的取值</li>
+<li>分析出具有层级关系的特征</li>
+<li>替换成数字编码<br><img src="https://img-blog.csdnimg.cn/4a72225e96394020bdd45ad40064d6a5.png"><br><img src="https://img-blog.csdnimg.cn/4d0ad3b2e05941dc97c7f74f48334910.png" alt="具有层级关系的特征"></li>
+</ol>
+<p><strong>先填充再编码，或者将缺失值编码为’0’</strong></p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 先填充再编码，或者将缺失值编码为'0'</span>
+df<span class="token punctuation">.</span>loc<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span>ordinal_cols<span class="token punctuation">]</span> <span class="token operator">=</span> df<span class="token punctuation">.</span>loc<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span>ordinal_cols<span class="token punctuation">]</span><span class="token punctuation">.</span>fillna<span class="token punctuation">(</span>method<span class="token operator">=</span><span class="token string">'backfill'</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 1] Columns with similar ordered categories [Poor&lt;Fair&lt;Typical/Average&lt;Good&lt;Excellent]</span>
+ordinal_cols1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'ExterQual'</span><span class="token punctuation">,</span> <span class="token string">'ExterCond'</span><span class="token punctuation">,</span> <span class="token string">'BsmtQual'</span><span class="token punctuation">,</span> <span class="token string">'BsmtCond'</span><span class="token punctuation">,</span> <span class="token string">'HeatingQC'</span><span class="token punctuation">,</span> <span class="token string">'KitchenQual'</span><span class="token punctuation">,</span> <span class="token string">'FireplaceQu'</span><span class="token punctuation">,</span> <span class="token string">'GarageQual'</span><span class="token punctuation">,</span> <span class="token string">'GarageCond'</span><span class="token punctuation">]</span>
+df<span class="token punctuation">.</span>loc<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span>ordinal_cols1<span class="token punctuation">]</span> <span class="token operator">=</span> df<span class="token punctuation">.</span>loc<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span>ordinal_cols1<span class="token punctuation">]</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'Po'</span><span class="token punctuation">,</span> <span class="token string">'Fa'</span><span class="token punctuation">,</span> <span class="token string">'TA'</span><span class="token punctuation">,</span> <span class="token string">'Gd'</span><span class="token punctuation">,</span> <span class="token string">'Ex'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 2] Columns with similar ordered categories [No Garage/Basement&lt;Unfinished&lt;Rough Finished&lt;Finished,etc]</span>
+ordinal_cols2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'BsmtFinType1'</span><span class="token punctuation">,</span> <span class="token string">'BsmtFinType2'</span><span class="token punctuation">]</span>
+df<span class="token punctuation">.</span>loc<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span>ordinal_cols2<span class="token punctuation">]</span> <span class="token operator">=</span> df<span class="token punctuation">.</span>loc<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span>ordinal_cols2<span class="token punctuation">]</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'Unf'</span><span class="token punctuation">,</span> <span class="token string">'LwQ'</span><span class="token punctuation">,</span> <span class="token string">'Rec'</span><span class="token punctuation">,</span> <span class="token string">'BLQ'</span><span class="token punctuation">,</span> <span class="token string">'ALQ'</span><span class="token punctuation">,</span> <span class="token string">'GLQ'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 3] Column with ordered categories [No Basement&lt;No Exposure&lt;Mimimum Exposure&lt;Average Exposure&lt;Good Exposure]</span>
+ordinal_cols3 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'BsmtExposure'</span><span class="token punctuation">]</span>
+df<span class="token punctuation">.</span>loc<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span>ordinal_cols3<span class="token punctuation">]</span> <span class="token operator">=</span> df<span class="token punctuation">.</span>loc<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span>ordinal_cols3<span class="token punctuation">]</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'No'</span><span class="token punctuation">,</span> <span class="token string">'Mn'</span><span class="token punctuation">,</span> <span class="token string">'Av'</span><span class="token punctuation">,</span> <span class="token string">'Gd'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="5-Data-Visualization"><a href="#5-Data-Visualization" class="headerlink" title="5. Data Visualization"></a>5. Data Visualization</h2><h2 id="6-Feature-Selection"><a href="#6-Feature-Selection" class="headerlink" title="6. Feature Selection"></a>6. Feature Selection</h2><p>使用<strong>热力图</strong>和<strong>相关系数矩阵</strong>筛选出有用的特征<br><img src="https://img-blog.csdnimg.cn/518000afbe1143ab839d714126d3a400.png" alt="热力图"></p>
+<pre class="line-numbers language-python"><code class="language-python">X_y <span class="token operator">=</span> pd<span class="token punctuation">.</span>concat<span class="token punctuation">(</span><span class="token punctuation">[</span>X<span class="token punctuation">,</span> y<span class="token punctuation">]</span><span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
+
+corr_s <span class="token operator">=</span> X_y<span class="token punctuation">.</span>corr<span class="token punctuation">(</span>method<span class="token operator">=</span><span class="token string">'spearman'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>abs<span class="token punctuation">(</span><span class="token punctuation">)</span>
+corr_with_price <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>corr_s<span class="token punctuation">[</span><span class="token string">'SalePrice'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+corr_with_price<span class="token punctuation">.</span>rename<span class="token punctuation">(</span>columns <span class="token operator">=</span> <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;'SalePrice':'spearman'&amp;#125;, inplace = True)</span>
+
+corr_p <span class="token operator">=</span> X_y<span class="token punctuation">.</span>corr<span class="token punctuation">(</span>method<span class="token operator">=</span><span class="token string">'pearson'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>abs<span class="token punctuation">(</span><span class="token punctuation">)</span>
+corr_with_price<span class="token punctuation">[</span><span class="token string">'pearson'</span><span class="token punctuation">]</span><span class="token operator">=</span>corr_p<span class="token punctuation">[</span><span class="token string">'SalePrice'</span><span class="token punctuation">]</span>
+
+corr_with_price <span class="token operator">=</span> corr_with_price<span class="token punctuation">.</span>sort_values<span class="token punctuation">(</span><span class="token string">'pearson'</span><span class="token punctuation">,</span>ascending<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+round<span class="token punctuation">(</span>corr_with_price<span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://img-blog.csdnimg.cn/e3a3ee5838684eaf9b7f6e7e7c2328ce.png" alt="与标签相关性的排序"></p>
+<h2 id="7-Model-Creation"><a href="#7-Model-Creation" class="headerlink" title="7. Model Creation"></a>7. Model Creation</h2><h3 id="预处理-numerical-amp-categorical"><a href="#预处理-numerical-amp-categorical" class="headerlink" title="预处理 (numerical &amp; categorical)"></a>预处理 (numerical &amp; categorical)</h3><p>使用<strong>Pipeline</strong>和<strong>ColumnTransformer</strong>进行数据的预处理。</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># Preprocessing for numerical data</span>
+numerical_transformer <span class="token operator">=</span> SimpleImputer<span class="token punctuation">(</span>strategy<span class="token operator">=</span><span class="token string">'median'</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># Preprocessing for categorical data</span>
+categorical_transformer <span class="token operator">=</span> Pipeline<span class="token punctuation">(</span>steps<span class="token operator">=</span><span class="token punctuation">[</span>
+    <span class="token punctuation">(</span><span class="token string">'imputer'</span><span class="token punctuation">,</span> SimpleImputer<span class="token punctuation">(</span>strategy<span class="token operator">=</span><span class="token string">'most_frequent'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'onehot'</span><span class="token punctuation">,</span> OneHotEncoder<span class="token punctuation">(</span>handle_unknown<span class="token operator">=</span><span class="token string">'ignore'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># Bundle preprocessing for numerical and categorical data</span>
+preprocessor <span class="token operator">=</span> ColumnTransformer<span class="token punctuation">(</span>
+    transformers<span class="token operator">=</span><span class="token punctuation">[</span>
+        <span class="token punctuation">(</span><span class="token string">'num'</span><span class="token punctuation">,</span> numerical_transformer<span class="token punctuation">,</span> numerical_cols<span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token punctuation">(</span><span class="token string">'cat'</span><span class="token punctuation">,</span> categorical_transformer<span class="token punctuation">,</span> categorical_cols<span class="token punctuation">)</span>
+    <span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>填充缺失值时有三种方式可以选择：</p>
+<ol>
+<li>strategy&#x3D;’median’</li>
+<li>strategy&#x3D;’most_frequent’</li>
+<li>strategy&#x3D;’mean’</li>
+</ol>
+<p>分类型特征编码也有多种选择：</p>
+<ol>
+<li>序号编码 Ordinal Encoding</li>
+<li>独热编码 One-hot Encoding（常用）</li>
+</ol>
+<h3 id="使用Pipeline"><a href="#使用Pipeline" class="headerlink" title="使用Pipeline"></a>使用Pipeline</h3><pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># Create object of class XGBRegressor</span>
+xgb <span class="token operator">=</span> XGBRegressor<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># Bundle preprocessing and modeling code in a pipeline</span>
+regressor <span class="token operator">=</span> Pipeline<span class="token punctuation">(</span>steps<span class="token operator">=</span><span class="token punctuation">[</span>
+    <span class="token punctuation">(</span><span class="token string">'preprocessor'</span><span class="token punctuation">,</span> preprocessor<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">'model'</span><span class="token punctuation">,</span> xgb<span class="token punctuation">)</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="使用Grid-Search调参"><a href="#使用Grid-Search调参" class="headerlink" title="使用Grid Search调参"></a>使用Grid Search调参</h3><p>（直接给出最优秀参数）</p>
+<pre class="line-numbers language-python"><code class="language-python">param_grid <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;'model__subsample': [0.5], 'model__n_estimators': [1400], </span>
+     <span class="token string">'model__max_depth'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">'model__learning_rate'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">0.02</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+     <span class="token string">'model__colsample_bytree'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">0.4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">'model__colsample_bylevel'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">0.5</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+     <span class="token string">'model__reg_alpha'</span><span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">'model__reg_lambda'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#125;</span>
+<span class="token punctuation">]</span>
+grid_search <span class="token operator">=</span> GridSearchCV<span class="token punctuation">(</span>regressor<span class="token punctuation">,</span> param_grid<span class="token punctuation">,</span> cv<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span> verbose<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> scoring<span class="token operator">=</span><span class="token string">'neg_mean_absolute_error'</span><span class="token punctuation">)</span>
+
+grid_search<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="8-Training-and-Testing-Model"><a href="#8-Training-and-Testing-Model" class="headerlink" title="8. Training and Testing Model"></a>8. Training and Testing Model</h2><p><img src="https://img-blog.csdnimg.cn/dcdd8d699c3e4235ad755c769f7d54a3.png"></p>
+<h2 id="9-Generate-predictions-amp-Save-output-to-CSV-file"><a href="#9-Generate-predictions-amp-Save-output-to-CSV-file" class="headerlink" title="9. Generate predictions &amp; Save output to CSV file"></a>9. Generate predictions &amp; Save output to CSV file</h2><pre class="line-numbers language-python"><code class="language-python">y_preds <span class="token operator">=</span> grid_search<span class="token punctuation">.</span>predict<span class="token punctuation">(</span>X_test<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-python"><code class="language-python">output <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;'Id': X_test.index,</span>
+                       <span class="token string">'SalePrice'</span><span class="token punctuation">:</span> y_preds<span class="token punctuation">.</span>round<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#125;)</span>
+output<span class="token punctuation">.</span>to_csv<span class="token punctuation">(</span><span class="token string">'submission.csv'</span><span class="token punctuation">,</span> index<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Messi</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://Yunchang-Liu.github.io/2022/11/22/kaggle-RegressionBaseline/">https://Yunchang-Liu.github.io/2022/11/22/kaggle-RegressionBaseline/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint polocy. If reproduced, please indicate source
+                    <a href="/about" target="_blank">Messi</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/kaggle/">
+                                    <span class="chip bg-color">kaggle</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
+            <div class="card">
+                <a href="/2022/11/22/kaggle-RegressionBaseline/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="kaggle-Regression Baseline">
+                        
+                        <span class="card-title">kaggle-Regression Baseline</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            My baseline for Regression
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-11-22
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/kaggle/" class="post-category">
+                                    kaggle
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/kaggle/">
+                        <span class="chip bg-color">kaggle</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/10/27/ML-PCA/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="机器学习之PCA">
+                        
+                        <span class="card-title">机器学习之PCA</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Principal Components Analysis-主成分分析算法
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-27
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    机器学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">机器学习</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2022</span>
+            
+            <span id="year">2022</span>
+            <a href="/about" target="_blank">Messi</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">18.4k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2022";
+                    var startMonth = "10";
+                    var startDate = "10";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Yunchang-Liu" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1422857525@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+    <a href="https://blog.csdn.net/m0_46684880" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN" data-position="top" data-delay="50">
+        <i class="fab fa-csdn">C</i>
+    </a>
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</body>
+
+</html>
